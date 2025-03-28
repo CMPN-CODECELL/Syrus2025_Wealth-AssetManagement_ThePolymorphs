@@ -91,7 +91,7 @@ The `FinWise` folder contains the frontend interface for interacting with the AI
 ### Implemented:
 1. Multiple asset types, including tangible assets like gold and property, are now considered in the **Goal-Based Investment Planner** and **Portfolio Rebalancing Agent**.
 2. The **Goal-Based Investment Planner** now suggests the required monthly investment amount instead of asking users to input it directly.
-3. All 4 Agents are Completed
+3. All 4 Agents are Completed.
 
 ---
 

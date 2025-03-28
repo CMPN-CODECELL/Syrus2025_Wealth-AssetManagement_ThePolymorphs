@@ -1,0 +1,43 @@
+{
+  "aiPersonaIntegrationId": "goal-based-investment-planning-1617",
+  "version": "1.0.0",
+  "description": "AI Agent goal-based-investment-planning-1617 package version 1.0.0",
+  "data": {
+    "workflows": [
+      [
+        "workflows",
+        "input-processing-5946.json"
+      ],
+      [
+        "workflows",
+        "ma-goal-based-investing-5511-primary-workflow-for-goal-based-investing.json"
+      ],
+      [
+        "workflows",
+        "goal-based-investing-5600.json"
+      ]
+    ],
+    "models": [
+      [
+        "models",
+        "azure-gpt-4o.json"
+      ],
+      [
+        "models",
+        "azure-gpt-4.json"
+      ]
+    ],
+    "miniAgents": [
+      [
+        "miniAgents",
+        "goal-based-investing-5511.json"
+      ]
+    ],
+    "aiPersonas": [
+      [
+        "aiPersonas",
+        "goal-based-investment-planning-1617.json"
+      ]
+    ]
+  }
+}

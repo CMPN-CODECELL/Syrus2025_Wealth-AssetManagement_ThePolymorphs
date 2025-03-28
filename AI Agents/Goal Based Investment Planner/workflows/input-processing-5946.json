@@ -1,0 +1,637 @@
+{
+  "_id": "d4688b82-8080-45b0-bdf9-4707b452fd8e",
+  "aiPersonaId": "5a02dd6f-5d83-4c59-930e-d60ad81d3499",
+  "integrationId": "input-processing-5946",
+  "name": "Workflow for Input processing",
+  "publisherAccountId": "a2dce97e-3000-433f-b854-4769422cdbc8",
+  "startTaskId": "18b3dbf3-9e90-47e3-bec2-251666f487dd",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "18b3dbf3-9e90-47e3-bec2-251666f487dd",
+      "type": "Display",
+      "config": {
+        "description": "Display the response to the user",
+        "name": "Display ( Target Amount )",
+        "type": "text",
+        "text": "<p>To achieve your goals, first you need to enter some details:<br>1. Target amount - Amount required to achieve your goal.</p>",
+        "formatVariables": [],
+        "rawText": "To achieve your goals, first you need to enter some details:\n1. Target amount - Amount required to achieve your goal."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "18b3dbf3-9e90-47e3-bec2-251666f487dd-1743164145831",
+          "nextTask": "1743164145831"
+        }
+      ]
+    },
+    {
+      "_id": "1743164145831",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input - Target Amount",
+        "type": "number"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164145831-1743164173391",
+          "nextTask": "1743164173391"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "TargetAmount",
+          "referencePath": "$output.userInput"
+        }
+      ]
+    },
+    {
+      "_id": "1743164152031",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input - Investment Duration",
+        "type": "number"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164152031-1743164199480",
+          "nextTask": "1743164199480"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "InvestmentDuration",
+          "referencePath": "$output.userInput"
+        }
+      ]
+    },
+    {
+      "_id": "1743164153711",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input - Risk Type",
+        "type": "string"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164153711-1743174622579",
+          "nextTask": "1743174622579"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "RiskType",
+          "referencePath": "$output.userInput"
+        }
+      ]
+    },
+    {
+      "_id": "1743164154897",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input - Monthly Investments",
+        "type": "number"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164154897-1743164407535",
+          "nextTask": "1743164407535"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "MonthlyInvestment",
+          "referencePath": "$output.userInput"
+        }
+      ]
+    },
+    {
+      "_id": "1743164173391",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display - Investment Duration",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<ol start=\"2\"><li><p>Investment Duration - Enter the number of months till you want to invest.</p></li></ol>",
+        "rawText": "Investment Duration - Enter the number of months till you want to invest."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164173391-1743164152031",
+          "nextTask": "1743164152031"
+        }
+      ]
+    },
+    {
+      "_id": "1743164199480",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display - Risk Type",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<ol start=\"3\"><li><p>Risk Type (Low, Moderate and High) - Select your risk type you want to continue with.</p></li></ol>",
+        "rawText": "Risk Type (Low, Moderate and High) - Select your risk type you want to continue with."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164199480-1743164153711",
+          "nextTask": "1743164153711"
+        }
+      ]
+    },
+    {
+      "_id": "1743164201703",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display - Monthly Investment",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<ol start=\"4\"><li><p>Monthly Investment Amount - Enter the amount you wish to invest every month. </p></li></ol>",
+        "rawText": "Monthly Investment Amount - Enter the amount you wish to invest every month."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164201703-1743164154897",
+          "nextTask": "1743164154897"
+        },
+        {
+          "name": "Default",
+          "_id": "1743164201703-1743164201703",
+          "nextTask": "1743164201703"
+        }
+      ]
+    },
+    {
+      "_id": "1743164407535",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Exit Message",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p>Thank you! for helping me with the details. Now, I will use the formula to calculate the future value and draft your investment plan accordingly :)</p>",
+        "rawText": "Thank you! for helping me with the details. Now, I will use the formula to calculate the future value and draft your investment plan accordingly :)"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164407535-1743165788336",
+          "nextTask": "1743165788336"
+        }
+      ]
+    },
+    {
+      "_id": "1743165788336",
+      "type": "Prompt",
+      "config": {
+        "description": "Prompt for LLM",
+        "name": "Prompt",
+        "modelId": "56feb720-adb7-464a-8e6b-fd79a510ba5b",
+        "base64DocumentData": "",
+        "documentIds": "",
+        "responseFormat": "text",
+        "query": "Generate a **goal-based investment plan** for the following details:    - **Goal Type:** [Specify Goal] (e.g., Buy a House, Retirement, Child’s Education)   - **Target Amount:** ₹[Enter Amount]   - **Time Horizon:** [X] years   - **Risk Tolerance:** [Low/Moderate/High]    ### **Investment Plan Requirements:**   1. **Investment Split:** Clearly divide investments into debt (stability) and equity (growth) based on risk tolerance.   2. **SIP Calculation:** Compute the monthly investment required to reach the target amount, using appropriate financial formulas.   3. **Lumpsum Calculation:** Determine the one-time investment needed to achieve the goal within the given timeframe.   4. **Detailed Investment Strategy:** Provide specific recommendations for:      - Debt instruments (Mutual Funds, Fixed Deposits, Bonds)      - Equity investments (Index Funds, ETFs, Stocks)      - Any other asset classes (Gold, REITs, etc.) if relevant.   5. **Reasoning & Market-Based Recommendations:**      - Justify why the chosen allocation is suitable for the goal.      - Suggest mutual funds, stocks, or assets based on **current market conditions** to optimize returns.    Ensure the output is **structured, well-formatted, and easy to follow** with clear headings, bold key points, and bullet points for readability.  ",
+        "systemPrompt": "You are a goal-based investment planner specializing in the Indian financial market. Your task is to create a tailored investment plan based on the user's financial goal, target amount, time horizon, and risk tolerance.\n\n### **Instructions:**\n1. **Determine Investment Allocation:**  \n   - For **low-risk investors**, prioritize stability (Fixed Deposits, Debt Mutual Funds).  \n   - For **moderate-risk investors**, allocate a mix of debt and equity (Hybrid Funds, Index Funds).  \n   - For **high-risk investors**, focus on high-growth assets (Equity, Thematic Funds, ETFs, Stocks).  \n\n2. **SIP Calculation:**  \n   - If the user opts for SIP, calculate the **monthly investment required** using:  \n     \\[\n     SIP = \\frac{FV}{\\left( \\frac{(1 + r)^n - 1}{r} \\right) * (1 + r)}\n     \\]  \n   - If opting for a **lumpsum**, calculate the one-time investment needed.\n\n3. **Create a Detailed Investment Plan:**  \n   - Provide a **clear asset allocation breakdown** (e.g., % in debt vs. equity).  \n   - Recommend **specific mutual funds, stocks, or fixed-income assets** based on the current market.  \n   - Suggest a **diversification strategy** to optimize returns while managing risk.  \n\n4. **Explain the Rationale:**  \n   - Justify why this allocation is ideal for the given goal.  \n   - Consider **inflation impact, tax efficiency, and expected returns**.\n\n5. **Suggest Suitable Investment Options:**  \n   - Recommend **Indian market-specific funds, stocks, or ETFs** aligning with the goal.  \n   - Base recommendations on **real-time market conditions**.\n\nEnsure the output is **structured, clear, and actionable** so the user can follow it easily.",
+        "temperature": null
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743165788336-1743166622679",
+          "nextTask": "1743166622679"
+        }
+      ]
+    },
+    {
+      "_id": "1743166622679",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"input.content\">$input.content</span> </p>",
+        "rawText": "$input.content"
+      },
+      "transitions": []
+    },
+    {
+      "_id": "1743174622579",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "How much a user should invest",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p><strong>How to Decide Your Investment Amount for a Financial Goal</strong></p><p>To determine how much you should invest for a financial goal, you can follow the <strong>100 - Age Rule</strong> and the <strong>50/30/20 Rule</strong> for balanced financial planning.</p><p></p><h3><strong>1. The 100 - Age Rule (Investment Allocation)</strong></h3><p>This rule suggests that your equity investments should be <strong>(100 - your age)</strong>% of your portfolio, with the rest in low-risk assets like bonds or fixed deposits. For example, if you are <strong>25 years old</strong>, you can invest <strong>75% in equities</strong> and <strong>25% in safer assets</strong>.</p><p></p><h3><strong>2. The 50/30/20 Rule (Income Allocation)</strong></h3><ul><li><p><strong>50% - Needs:</strong> Rent, food, EMIs, healthcare.</p></li><li><p><strong>30% - Wants:</strong> Entertainment, travel, shopping.</p></li><li><p><strong>20% - Savings &amp; Investments:</strong> Retirement, financial goals, emergency fund.</p></li></ul><h3><strong>Example: Saving for a Car</strong></h3><p>If your monthly income is <strong>₹1,00,000</strong>, then:</p><ul><li><p><strong>₹50,000</strong> covers essentials.</p></li><li><p><strong>₹30,000</strong> is for discretionary spending.</p></li><li><p><strong>₹20,000</strong> is for investments.</p></li></ul><p>If you want to buy a car worth <strong>₹10,00,000 in 5 years</strong>, investing <strong>₹20,000 per month</strong> in a mix of <strong>Debt Mutual Funds, Fixed Deposits, or Hybrid Funds</strong> can help you reach the goal efficiently.</p><p></p><h3><strong>Key Takeaways</strong></h3><ol><li><p>1. Use the <strong>100 - Age Rule</strong> to decide risk allocation.</p></li><li><p>2. Follow the <strong>50/30/20 Rule</strong> to budget effectively.</p></li><li><p>3. Choose investments based on your time horizon and risk tolerance.</p></li></ol><p></p><p>By applying these principles, you can systematically invest and achieve your financial goals with confidence! </p>",
+        "rawText": "How to Decide Your Investment Amount for a Financial Goal\n\nTo determine how much you should invest for a financial goal, you can follow the 100 - Age Rule and the 50/30/20 Rule for balanced financial planning.\n\n1. The 100 - Age Rule (Investment Allocation)\n\nThis rule suggests that your equity investments should be (100 - your age)% of your portfolio, with the rest in low-risk assets like bonds or fixed deposits. For example, if you are 25 years old, you can invest 75% in equities and 25% in safer assets.\n\n2. The 50/30/20 Rule (Income Allocation)\n\n50% - Needs: Rent, food, EMIs, healthcare.\n\n30% - Wants: Entertainment, travel, shopping.\n\n20% - Savings & Investments: Retirement, financial goals, emergency fund.\n\nExample: Saving for a Car\n\nIf your monthly income is ₹1,00,000, then:\n\n₹50,000 covers essentials.\n\n₹30,000 is for discretionary spending.\n\n₹20,000 is for investments.\n\nIf you want to buy a car worth ₹10,00,000 in 5 years, investing ₹20,000 per month in a mix of Debt Mutual Funds, Fixed Deposits, or Hybrid Funds can help you reach the goal efficiently.\n\nKey Takeaways\n\n1. Use the 100 - Age Rule to decide risk allocation.\n\n2. Follow the 50/30/20 Rule to budget effectively.\n\n3. Choose investments based on your time horizon and risk tolerance.\n\nBy applying these principles, you can systematically invest and achieve your financial goals with confidence!"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743174622579-1743164201703",
+          "nextTask": "1743164201703"
+        }
+      ]
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": -38.9331380060662,
+      "y": -3.695260230191195,
+      "zoom": 0.6597539553864473
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 325,
+          "y": 76
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 320,
+          "height": 176
+        },
+        "selected": false
+      },
+      {
+        "position": {
+          "x": 671.5806677475384,
+          "y": 124
+        },
+        "type": "Display",
+        "id": "18b3dbf3-9e90-47e3-bec2-251666f487dd",
+        "data": {},
+        "measured": {
+          "width": 298,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1039,
+          "y": 124
+        },
+        "type": "Input",
+        "id": "1743164145831",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1028,
+          "y": 246.7219683569084
+        },
+        "type": "Input",
+        "id": "1743164152031",
+        "data": {},
+        "measured": {
+          "width": 273,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1023,
+          "y": 369.3732864091318
+        },
+        "type": "Input",
+        "id": "1743164153711",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1023,
+          "y": 489.3732864091319
+        },
+        "type": "Input",
+        "id": "1743164154897",
+        "data": {},
+        "measured": {
+          "width": 276,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 709.5806677475384,
+          "y": 246.7219683569084
+        },
+        "type": "Display",
+        "id": "1743164173391",
+        "data": {},
+        "measured": {
+          "width": 290,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 709.5806677475384,
+          "y": 369.3732864091318
+        },
+        "type": "Display",
+        "id": "1743164199480",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 709.5806677475384,
+          "y": 489.3732864091319
+        },
+        "type": "Display",
+        "id": "1743164201703",
+        "data": {},
+        "measured": {
+          "width": 285,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1345.5540758810432,
+          "y": 489.3732864091319
+        },
+        "type": "Display",
+        "id": "1743164407535",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1345.5540758810432,
+          "y": 635.699624858911
+        },
+        "type": "Prompt",
+        "id": "1743165788336",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1664.2141716744802,
+          "y": 635.699624858911
+        },
+        "type": "Display",
+        "id": "1743166622679",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1332,
+          "y": 369.3732864091318
+        },
+        "type": "Display",
+        "id": "1743174622579",
+        "data": {},
+        "measured": {
+          "width": 300,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-0",
+        "type": "Start",
+        "source": "0",
+        "target": "18b3dbf3-9e90-47e3-bec2-251666f487dd",
+        "sourceHandle": "0-source-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "18b3dbf3-9e90-47e3-bec2-251666f487dd-1743164145831",
+        "source": "18b3dbf3-9e90-47e3-bec2-251666f487dd",
+        "target": "1743164145831",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "18b3dbf3-9e90-47e3-bec2-251666f487dd-source-1",
+        "targetHandle": "1743164145831-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164145831-1743164173391",
+        "source": "1743164145831",
+        "target": "1743164173391",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164145831-source-1",
+        "targetHandle": "1743164173391-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164152031-1743164199480",
+        "source": "1743164152031",
+        "target": "1743164199480",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164152031-source-1",
+        "targetHandle": "1743164199480-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164153711-1743174622579",
+        "source": "1743164153711",
+        "target": "1743174622579",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164153711-source-1",
+        "targetHandle": "1743174622579-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164154897-1743164407535",
+        "source": "1743164154897",
+        "target": "1743164407535",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164154897-source-1",
+        "targetHandle": "1743164407535-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164173391-1743164152031",
+        "source": "1743164173391",
+        "target": "1743164152031",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164173391-source-1",
+        "targetHandle": "1743164152031-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164199480-1743164153711",
+        "source": "1743164199480",
+        "target": "1743164153711",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164199480-source-1",
+        "targetHandle": "1743164153711-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164201703-1743164154897",
+        "source": "1743164201703",
+        "target": "1743164154897",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164201703-source-1",
+        "targetHandle": "1743164154897-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164201703-1743164201703",
+        "source": "1743164201703",
+        "target": "1743164201703",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164201703-source-2",
+        "targetHandle": "1743164201703-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164407535-1743165788336",
+        "source": "1743164407535",
+        "target": "1743165788336",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164407535-source-3",
+        "targetHandle": "1743165788336-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743165788336-1743166622679",
+        "source": "1743165788336",
+        "target": "1743166622679",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743165788336-source-1",
+        "targetHandle": "1743166622679-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743174622579-1743164201703",
+        "source": "1743174622579",
+        "target": "1743164201703",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743174622579-source-3",
+        "targetHandle": "1743164201703-target-2",
+        "selected": false
+      }
+    ]
+  }
+}

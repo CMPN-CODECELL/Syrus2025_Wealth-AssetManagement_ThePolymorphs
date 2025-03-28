@@ -1,0 +1,31 @@
+{
+  "_id": "56feb720-adb7-464a-8e6b-fd79a510ba5b",
+  "creator": "OpenAI",
+  "name": "GPT 4o (Azure)",
+  "description": "A flagship model offering fast performance and cost-efficiency.",
+  "isFineTunable": false,
+  "isFineTuned": false,
+  "isJSONResponseSupported": true,
+  "onDemandProvisioning": false,
+  "status": "Active",
+  "type": "Chat",
+  "provider": "Azure",
+  "price": {
+    "input": {
+      "basePrice": 2.5
+    },
+    "output": {
+      "basePrice": 10
+    }
+  },
+  "providerModelId": "azure-gpt-4o",
+  "supportedMimeTypes": [
+    "image/png",
+    "image/jpeg",
+    "image/jpg",
+    "image/webp",
+    "image/gif"
+  ],
+  "outgoingRequestIdentifierQuery": "body::jsonb ->> 'model' = 'azure-gpt-4o'",
+  "supportsSafetySettings": true
+}

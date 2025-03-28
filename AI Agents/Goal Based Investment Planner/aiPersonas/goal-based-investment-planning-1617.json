@@ -1,0 +1,60 @@
+{
+  "_id": "5a02dd6f-5d83-4c59-930e-d60ad81d3499",
+  "description": "",
+  "inferenceEngine": {
+    "modelId": "8c23a356-420c-4ded-9694-1a571116566b"
+  },
+  "integrationId": "goal-based-investment-planning-1617",
+  "integrations": {},
+  "intentClassification": {
+    "modelId": "8c23a356-420c-4ded-9694-1a571116566b"
+  },
+  "name": "Goal Based Investment Planning",
+  "publisherAccountId": "a2dce97e-3000-433f-b854-4769422cdbc8",
+  "status": "Active",
+  "useAsChatbot": true,
+  "variables": {
+    "secrets": [],
+    "agent": [
+      "TargetAmount",
+      "InvestmentDuration",
+      "RiskType",
+      "MonthlyInvestment"
+    ]
+  },
+  "miniAgentIds": [
+    "f0254e36-caf2-46b3-b72a-ac76cebaf85f"
+  ],
+  "miniAgents": [
+    {
+      "_id": "f0254e36-caf2-46b3-b72a-ac76cebaf85f",
+      "integrationId": "goal-based-investing-5511",
+      "name": "Goal Based Investing",
+      "scope": "The Goal-Oriented Investment Planning sub-agent is a specialized AI module designed to assist users in achieving their financial goals by computing the required monthly investment based on the target amount, investment duration, and expected return. It integrates real-time financial market data, including stock indices, mutual funds, fixed deposits, and government bonds, to provide accurate and up-to-date investment recommendations. By assessing the user’s risk profile, it suggests low-risk options like fixed deposits and debt funds, medium-risk options such as balanced funds and large-cap SIPs, and high-risk options including equity mutual funds and stocks. The sub-agent dynamically adjusts investment plans based on market fluctuations and ensures compliance with Indian financial regulations. It processes queries related to investment calculations, risk-based strategies, and the impact of market conditions, delivering structured responses for seamless decision-making. The AI-driven approach enhances accuracy, efficiency, and adaptability, making it an essential financial planning tool within the UPTIQ ecosystem. By leveraging automated investment adjustments and regulatory adherence, this sub-agent provides a comprehensive, user-centric, and intelligent investment planning solution tailored to the Indian market.",
+      "intents": [
+        {
+          "_id": "de689e3e-9509-4044-b24d-a36fd973f4d4",
+          "name": "Input processing",
+          "description": "Intent Description: This intent captures and processes user-provided inputs related to goal-oriented investment planning. It ensures that all necessary details are collected to compute the required monthly investment and recommend suitable financial instruments.\n\nUser Inputs Captured:\nTarget Investment Amount: The total amount the user wants to accumulate.\nInvestment Duration: The number of months/years for achieving the target.\nRisk Appetite: The user's preferred risk level (Low, Medium, High).\nMonthly Investment Amount: How much amount a user can invest monthly.",
+          "examples": [
+            "\"I want to buy\"",
+            "\"I have some financial goals for 10 years\"",
+            "\"I want to buy a car of 10 lakhs\"",
+            "\"I want a house\""
+          ],
+          "workflowId": "d4688b82-8080-45b0-bdf9-4707b452fd8e",
+          "flowType": "Workflow"
+        }
+      ],
+      "miniAgentId": "f0254e36-caf2-46b3-b72a-ac76cebaf85f"
+    }
+  ],
+  "rags": [],
+  "intentWorkflows": [
+    {
+      "_id": "d4688b82-8080-45b0-bdf9-4707b452fd8e",
+      "integrationId": "input-processing-5946",
+      "name": "Workflow for Input processing"
+    }
+  ]
+}

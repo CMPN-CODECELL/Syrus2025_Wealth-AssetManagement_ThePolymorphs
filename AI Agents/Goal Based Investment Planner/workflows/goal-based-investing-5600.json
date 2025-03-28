@@ -1,0 +1,464 @@
+{
+  "_id": "d51e6e87-bdd4-49f9-bec1-5dd8ab12c01c",
+  "aiPersonaId": "5a02dd6f-5d83-4c59-930e-d60ad81d3499",
+  "integrationId": "goal-based-investing-5600",
+  "name": "Goal-based Investing",
+  "publisherAccountId": "a2dce97e-3000-433f-b854-4769422cdbc8",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "1743161991392",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader",
+        "text": "To achieve your goals, first you need to enter your \n1. Target amount"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743161991392-1743162177056",
+          "nextTask": "1743162177056"
+        }
+      ]
+    },
+    {
+      "_id": "1743162177056",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input",
+        "type": "number"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743162177056-1743162327815",
+          "nextTask": "1743162327815"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "TargetAmount",
+          "referencePath": "$agent.TargetAmount"
+        }
+      ]
+    },
+    {
+      "_id": "1743162324768",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader 4",
+        "text": "4. Monthly Investment amount"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743162324768-1743162426233",
+          "nextTask": "1743162426233"
+        }
+      ]
+    },
+    {
+      "_id": "1743162326065",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader 3",
+        "text": "3. Risk Type (Low, Moderate and High)"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743162326065-1743162424415",
+          "nextTask": "1743162424415"
+        }
+      ]
+    },
+    {
+      "_id": "1743162327815",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader 2",
+        "text": "2. Investment Duration"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743162327815-1743162422697",
+          "nextTask": "1743162422697"
+        }
+      ]
+    },
+    {
+      "_id": "1743162422697",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input 2",
+        "type": "number"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743162422697-1743162326065",
+          "nextTask": "1743162326065"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "InvestmentDuration",
+          "referencePath": "$agent.InvestmentDuration"
+        }
+      ]
+    },
+    {
+      "_id": "1743162424415",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input 3",
+        "type": "string"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743162424415-1743162324768",
+          "nextTask": "1743162324768"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "RiskType",
+          "referencePath": "$agent.RiskType"
+        }
+      ]
+    },
+    {
+      "_id": "1743162426233",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input 4",
+        "type": "string"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743162426233-1743162699009",
+          "nextTask": "1743162699009"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "MonthlyInvestment",
+          "referencePath": "$agent.MonthlyInvestment"
+        }
+      ]
+    },
+    {
+      "_id": "1743162699009",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display",
+        "type": "text",
+        "text": "<p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.TargetAmount\">$agent.TargetAmount</span> </p><p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.InvestmentDuration\">$agent.InvestmentDuration</span> </p><p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.RiskType\">$agent.RiskType</span> </p><p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.MonthlyInvestment\">$agent.MonthlyInvestment</span> <br><br>confirm?</p>",
+        "rawText": "$agent.TargetAmount \n\n$agent.InvestmentDuration \n\n$agent.RiskType \n\n$agent.MonthlyInvestment \n\nconfirm?",
+        "formatVariables": []
+      },
+      "transitions": []
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": 124.53253347813575,
+      "y": -6.768687821677915,
+      "zoom": 0.6597539553864475
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 47.98629127305486,
+          "y": -25.31634483139201
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 320,
+          "height": 176
+        },
+        "selected": false
+      },
+      {
+        "position": {
+          "x": 455.0154653100585,
+          "y": 92.2980665287985
+        },
+        "type": "Loader",
+        "id": "1743161991392",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 823.4899825571465,
+          "y": 92.2980665287985
+        },
+        "type": "Input",
+        "id": "1743162177056",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 455.0154653100585,
+          "y": 506
+        },
+        "type": "Loader",
+        "id": "1743162324768",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 455.0154653100585,
+          "y": 377
+        },
+        "type": "Loader",
+        "id": "1743162326065",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 455.0154653100585,
+          "y": 244
+        },
+        "type": "Loader",
+        "id": "1743162327815",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 823.4899825571465,
+          "y": 244
+        },
+        "type": "Input",
+        "id": "1743162422697",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 823.4899825571465,
+          "y": 388.00000000000006
+        },
+        "type": "Input",
+        "id": "1743162424415",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 823.4899825571465,
+          "y": 506
+        },
+        "type": "Input",
+        "id": "1743162426233",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1365,
+          "y": 540
+        },
+        "type": "Display",
+        "id": "1743162699009",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-1743161991392",
+        "type": "Start",
+        "source": "0",
+        "target": "1743161991392",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "0-source-1",
+        "targetHandle": "1743161991392-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743161991392-1743162177056",
+        "source": "1743161991392",
+        "target": "1743162177056",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743161991392-source-1",
+        "targetHandle": "1743162177056-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743162177056-1743162327815",
+        "source": "1743162177056",
+        "target": "1743162327815",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743162177056-source-1",
+        "targetHandle": "1743162327815-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743162324768-1743162426233",
+        "source": "1743162324768",
+        "target": "1743162426233",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743162324768-source-1",
+        "targetHandle": "1743162426233-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743162326065-1743162424415",
+        "source": "1743162326065",
+        "target": "1743162424415",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743162326065-source-1",
+        "targetHandle": "1743162424415-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743162327815-1743162422697",
+        "source": "1743162327815",
+        "target": "1743162422697",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743162327815-source-1",
+        "targetHandle": "1743162422697-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743162422697-1743162326065",
+        "source": "1743162422697",
+        "target": "1743162326065",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743162422697-source-1",
+        "targetHandle": "1743162326065-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743162424415-1743162324768",
+        "source": "1743162424415",
+        "target": "1743162324768",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743162424415-source-1",
+        "targetHandle": "1743162324768-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743162426233-1743162699009",
+        "source": "1743162426233",
+        "target": "1743162699009",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743162426233-source-1",
+        "targetHandle": "1743162699009-target-1",
+        "selected": false
+      }
+    ]
+  },
+  "startTaskId": "1743161991392"
+}

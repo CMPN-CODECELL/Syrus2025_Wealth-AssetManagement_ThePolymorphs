@@ -1,0 +1,232 @@
+{
+  "_id": "9d13d26e-1f2a-40da-801b-a0ec5790da53",
+  "aiPersonaId": "a1a54a10-93ea-4e95-b490-2a10a201fde4",
+  "integrationId": "wealth-asset-management-intent-2708",
+  "name": "Workflow for Wealth & Asset Management Intent",
+  "publisherAccountId": "f1c8e177-0237-47fb-bf83-ff77ea691f83",
+  "startTaskId": "1743176562993",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "37eb9c2a-58f2-43ed-a02a-22f4a9cdb1af",
+      "type": "Display",
+      "config": {
+        "description": "Display the response to the user",
+        "name": "Display",
+        "type": "text",
+        "text": "<p>The Output Received is-</p><p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.RAG_result\">$agent.RAG_result</span></p><p></p>",
+        "formatVariables": [],
+        "rawText": "The Output Received is-\n\n$agent.RAG_result"
+      },
+      "transitions": []
+    },
+    {
+      "_id": "1743176543961",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input",
+        "type": "string"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743176543961-1743176714532",
+          "nextTask": "1743176714532"
+        }
+      ],
+      "globalVariables": []
+    },
+    {
+      "_id": "1743176562993",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader",
+        "text": "Enter any question you have related to wealth and asset management"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743176562993-1743176543961",
+          "nextTask": "1743176543961"
+        }
+      ]
+    },
+    {
+      "_id": "1743176714532",
+      "type": "RAGQuery",
+      "config": {
+        "description": "Query RAG",
+        "name": "RAG Query",
+        "ragContainerId": "5f4647bb-e72d-4bc3-ad40-0f2331d9bb06",
+        "systemPrompt": "You are a financial data retrieval engine. When provided with a refined query (e.g., 'net worth, asset breakdown'), your task is to search through our curated financial data repository, which contains curated content from 30 financial webpages. Retrieve and return only highly relevant and factual text snippets and documents that include key financial metrics, historical trends, and asset valuations. Ensure the output is concise, well-organized, and formatted for easy downstream processing. Avoid including any irrelevant or non-factual information.",
+        "responseFormat": "text",
+        "query": "$agent.userQuestion",
+        "temperature": 1,
+        "numOfConversationTurns": 3
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743176714532-37eb9c2a-58f2-43ed-a02a-22f4a9cdb1af",
+          "nextTask": "37eb9c2a-58f2-43ed-a02a-22f4a9cdb1af"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "RAG_result",
+          "referencePath": "$output.content"
+        },
+        {
+          "name": "RAG_source",
+          "referencePath": "$output.sources"
+        }
+      ]
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": 14.979798878798078,
+      "y": 6.111693842800946,
+      "zoom": 0.9773873457132011
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 305.99885383671244,
+          "y": 407.132226851755
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 320,
+          "height": 190
+        },
+        "selected": false
+      },
+      {
+        "position": {
+          "x": 836.9305925504787,
+          "y": 400
+        },
+        "type": "Display",
+        "id": "37eb9c2a-58f2-43ed-a02a-22f4a9cdb1af",
+        "data": {},
+        "measured": {
+          "width": 298,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 495.3377195779376,
+          "y": 116.99770767342477
+        },
+        "type": "Input",
+        "id": "1743176543961",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 374.93989285938517,
+          "y": 265.3577552914758
+        },
+        "type": "Loader",
+        "id": "1743176562993",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 853.9409123308666,
+          "y": 116.99770767342477
+        },
+        "type": "RAGQuery",
+        "id": "1743176714532",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-1743176562993",
+        "type": "Start",
+        "source": "0",
+        "target": "1743176562993",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "0-source-1",
+        "targetHandle": "1743176562993-target-3",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743176543961-1743176714532",
+        "source": "1743176543961",
+        "target": "1743176714532",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743176543961-source-1",
+        "targetHandle": "1743176714532-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743176562993-1743176543961",
+        "source": "1743176562993",
+        "target": "1743176543961",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743176562993-source-2",
+        "targetHandle": "1743176543961-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743176714532-37eb9c2a-58f2-43ed-a02a-22f4a9cdb1af",
+        "source": "1743176714532",
+        "target": "37eb9c2a-58f2-43ed-a02a-22f4a9cdb1af",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743176714532-source-3",
+        "targetHandle": "37eb9c2a-58f2-43ed-a02a-22f4a9cdb1af-target-2",
+        "selected": false
+      }
+    ]
+  }
+}

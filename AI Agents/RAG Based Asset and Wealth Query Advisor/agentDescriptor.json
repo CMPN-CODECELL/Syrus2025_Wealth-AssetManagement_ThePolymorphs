@@ -1,0 +1,101 @@
+{
+  "aiPersonaIntegrationId": "finwise-ai-financial-advisor-agent-5946",
+  "version": "1.0.0",
+  "description": "AI Agent finwise-ai-financial-advisor-agent-5946 package version 1.0.0",
+  "data": {
+    "workflows": [
+      [
+        "workflows",
+        "wealth-asset-management-intent-2708.json"
+      ],
+      [
+        "workflows",
+        "general-financial-inquiries-intent-6724.json"
+      ],
+      [
+        "workflows",
+        "ma-wealth-asset-advisor-8549-primary-workflow-for-wealth-asset-advisor.json"
+      ]
+    ],
+    "ragQueries": [
+      [
+        "ragQueries",
+        "Investor RAG.json"
+      ]
+    ],
+    "vectorStores": [
+      [
+        "vectorStores",
+        "Investment Knowledge Vector Store.json"
+      ]
+    ],
+    "dataStores": [
+      [
+        "dataStores",
+        "Investment Scraped Data.json"
+      ]
+    ],
+    "models": [
+      [
+        "models",
+        "azure-gpt-4o.json"
+      ],
+      [
+        "models",
+        "azure-gpt-4.json"
+      ]
+    ],
+    "dataSources": [
+      [
+        "dataSources",
+        "Scraped-2",
+        "config.json"
+      ],
+      [
+        "dataSources",
+        "Scraped-3",
+        "config.json"
+      ],
+      [
+        "dataSources",
+        "Scraped-1",
+        "config.json"
+      ],
+      [
+        "dataSources",
+        "Scraped-4",
+        "config.json"
+      ]
+    ],
+    "deploymentDependencyDataSources": [
+      [
+        "deploymentDependencyDataSources",
+        "Scraped-2.json"
+      ],
+      [
+        "deploymentDependencyDataSources",
+        "Scraped-3.json"
+      ],
+      [
+        "deploymentDependencyDataSources",
+        "Scraped-1.json"
+      ],
+      [
+        "deploymentDependencyDataSources",
+        "Scraped-4.json"
+      ]
+    ],
+    "miniAgents": [
+      [
+        "miniAgents",
+        "wealth-asset-advisor-8549.json"
+      ]
+    ],
+    "aiPersonas": [
+      [
+        "aiPersonas",
+        "finwise-ai-financial-advisor-agent-5946.json"
+      ]
+    ]
+  }
+}

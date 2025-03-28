@@ -1,0 +1,237 @@
+{
+  "_id": "62efda8b-5e6c-4eeb-b8f0-5416ca314ece",
+  "aiPersonaId": "a1a54a10-93ea-4e95-b490-2a10a201fde4",
+  "integrationId": "general-financial-inquiries-intent-6724",
+  "name": "Workflow for General Financial Inquiries Intent",
+  "publisherAccountId": "f1c8e177-0237-47fb-bf83-ff77ea691f83",
+  "startTaskId": "1743177161440",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "6f716635-bc14-481b-b804-8e36f3554f52",
+      "type": "Display",
+      "config": {
+        "description": "Display the response to the user",
+        "name": "Display",
+        "type": "text",
+        "text": "<p>The Output Received is-</p><p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.RAG_result\">$agent.RAG_result</span></p><p></p>",
+        "formatVariables": [],
+        "rawText": "The Output Received is-\n\n$agent.RAG_result"
+      },
+      "transitions": []
+    },
+    {
+      "_id": "1743177101268",
+      "type": "Input",
+      "config": {
+        "description": "Take user input",
+        "name": "Input",
+        "type": "string"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743177101268-1743177197730",
+          "nextTask": "1743177197730"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "userQuestion",
+          "referencePath": "$output.userInput"
+        }
+      ]
+    },
+    {
+      "_id": "1743177161440",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader",
+        "text": "Enter any general question you may have related to Finance"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743177161440-1743177101268",
+          "nextTask": "1743177101268"
+        }
+      ]
+    },
+    {
+      "_id": "1743177197730",
+      "type": "RAGQuery",
+      "config": {
+        "description": "Query RAG",
+        "name": "RAG Query",
+        "ragContainerId": "5f4647bb-e72d-4bc3-ad40-0f2331d9bb06",
+        "systemPrompt": "You are a financial data retrieval engine focused on general market and economic information. When provided with a refined query (e.g., 'global stock market trends, interest rates'), your task is to search through our curated repository for relevant information covering market trends, economic indicators, financial definitions, and contextual insights. Retrieve and return only highly relevant, fact-based textual information that is concise, well-organized, and directly addresses the query. Avoid personalized asset details or irrelevant data.",
+        "responseFormat": "text",
+        "query": "$agent.userQuestion",
+        "temperature": 1,
+        "numOfConversationTurns": 3
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743177197730-6f716635-bc14-481b-b804-8e36f3554f52",
+          "nextTask": "6f716635-bc14-481b-b804-8e36f3554f52"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "RAG_result",
+          "referencePath": "$output.content"
+        },
+        {
+          "name": "RAG_source",
+          "referencePath": "$output.sources"
+        }
+      ]
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": -150.3292912152558,
+      "y": 139.56951036757675,
+      "zoom": 0.927475658393569
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 360,
+          "y": 400
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 320,
+          "height": 190
+        },
+        "selected": false
+      },
+      {
+        "position": {
+          "x": 1148.363887948677,
+          "y": 343.933838554786
+        },
+        "type": "Display",
+        "id": "6f716635-bc14-481b-b804-8e36f3554f52",
+        "data": {},
+        "measured": {
+          "width": 298,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 680,
+          "y": 93.21058104248249
+        },
+        "type": "Input",
+        "id": "1743177101268",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 486.05269563887475,
+          "y": 228.68424531382607
+        },
+        "type": "Loader",
+        "id": "1743177161440",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1076.1378388991502,
+          "y": 93.2105810424825
+        },
+        "type": "RAGQuery",
+        "id": "1743177197730",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-1743177161440",
+        "type": "Start",
+        "source": "0",
+        "target": "1743177161440",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "0-source-1",
+        "targetHandle": "1743177161440-target-3",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743177101268-1743177197730",
+        "source": "1743177101268",
+        "target": "1743177197730",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743177101268-source-1",
+        "targetHandle": "1743177197730-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743177161440-1743177101268",
+        "source": "1743177161440",
+        "target": "1743177101268",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743177161440-source-2",
+        "targetHandle": "1743177101268-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743177197730-6f716635-bc14-481b-b804-8e36f3554f52",
+        "source": "1743177197730",
+        "target": "6f716635-bc14-481b-b804-8e36f3554f52",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743177197730-source-3",
+        "targetHandle": "6f716635-bc14-481b-b804-8e36f3554f52-target-2",
+        "selected": false
+      }
+    ]
+  }
+}

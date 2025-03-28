@@ -1,0 +1,29 @@
+{
+  "_id": "4ef76ec9-055f-4613-bc75-0d56afb7c776",
+  "name": "Investment Scraped Data",
+  "publisherAccountId": "f1c8e177-0237-47fb-bf83-ff77ea691f83",
+  "metadataExtractionWorkflowId": "",
+  "filterFields": [],
+  "enablePiiMasking": false,
+  "chunkingState": {
+    "dataSources": [
+      {
+        "dataSourceId": "23da55f9-3ecd-40cb-80cc-8b36f258d0d9",
+        "state": "Processed"
+      },
+      {
+        "dataSourceId": "85e0484b-b544-4560-b70a-a916066ccd19",
+        "state": "Processed"
+      },
+      {
+        "dataSourceId": "aaccfd78-0edd-4109-bab9-854b56923817",
+        "state": "Processed"
+      },
+      {
+        "dataSourceId": "7bcbb015-3e8f-474b-a381-3752782e7440",
+        "state": "Processed"
+      }
+    ]
+  },
+  "status": "Active"
+}

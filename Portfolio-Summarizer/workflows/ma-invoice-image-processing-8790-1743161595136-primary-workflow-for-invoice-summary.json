@@ -1,0 +1,298 @@
+{
+  "_id": "868956ba-0823-46a1-8c3f-411fccc9f319",
+  "aiPersonaId": "41206f59-d198-4e7c-b2e7-4393c5e4e141",
+  "integrationId": "ma-invoice-image-processing-8790-1743161595136-primary-workflow-for-invoice-summary",
+  "isMiniAgentPrimaryWorkflow": true,
+  "name": "Primary Workflow for Invoice Summary",
+  "publisherAccountId": "f9da4f51-27cd-46a7-bf5e-98aa8046f152",
+  "startTaskId": "05890272-9fef-4251-8d32-0c7ebd81cb87",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "05890272-9fef-4251-8d32-0c7ebd81cb87",
+      "type": "PassThrough",
+      "config": {
+        "name": "Pass Through",
+        "description": "Pass through the input to the output"
+      },
+      "transitions": [
+        {
+          "_id": "138d1dee-1c65-4dcb-8fe2-90ab7b0fb521-05890272-9fef-4251-8d32-0c7ebd81cb87",
+          "nextTask": "138d1dee-1c65-4dcb-8fe2-90ab7b0fb521",
+          "name": "If query doesnt exists",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "notExists",
+              "path": "$output.query"
+            }
+          ]
+        },
+        {
+          "_id": "802682e7-8172-4cc3-abe6-81a7294aca5e-05890272-9fef-4251-8d32-0c7ebd81cb87",
+          "nextTask": "802682e7-8172-4cc3-abe6-81a7294aca5e",
+          "name": "If intents are already classified",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.intents"
+            },
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.query"
+            }
+          ]
+        },
+        {
+          "_id": "05890272-9fef-4251-8d32-0c7ebd81cb87-95fb392c-0c18-441a-b40f-7ad937e17df5",
+          "name": "If query exists",
+          "nextTask": "95fb392c-0c18-441a-b40f-7ad937e17df5",
+          "rules": [
+            {
+              "type": "any",
+              "operator": "exists",
+              "path": "$output.query"
+            },
+            {
+              "type": "any",
+              "operator": "notExists",
+              "path": "$output.intents"
+            }
+          ]
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "query",
+          "referencePath": "$input.query"
+        },
+        {
+          "name": "rawQuery",
+          "referencePath": "$input.rawQuery"
+        },
+        {
+          "name": "conversationId",
+          "referencePath": "$input.conversationId"
+        }
+      ]
+    },
+    {
+      "_id": "138d1dee-1c65-4dcb-8fe2-90ab7b0fb521",
+      "type": "Input",
+      "config": {
+        "name": "User Input",
+        "description": "Get user input",
+        "type": "string"
+      },
+      "transitions": [
+        {
+          "_id": "138d1dee-1c65-4dcb-8fe2-90ab7b0fb521-95fb392c-0c18-441a-b40f-7ad937e17df5",
+          "name": "Default",
+          "nextTask": "95fb392c-0c18-441a-b40f-7ad937e17df5"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "query",
+          "referencePath": "$output.userInput"
+        },
+        {
+          "name": "rawQuery",
+          "referencePath": "$output.userInput"
+        },
+        {
+          "name": "selfLoopMiniAgent",
+          "referencePath": "true"
+        }
+      ]
+    },
+    {
+      "_id": "95fb392c-0c18-441a-b40f-7ad937e17df5",
+      "type": "Loader",
+      "config": {
+        "name": "Loader",
+        "description": "Display loader message",
+        "type": "loader",
+        "text": "Just a moment... identifying the best approach to assist you."
+      },
+      "transitions": [
+        {
+          "_id": "95fb392c-0c18-441a-b40f-7ad937e17df5-1506a797-4051-420a-bdde-1d2b8093a094",
+          "name": "Default",
+          "nextTask": "1506a797-4051-420a-bdde-1d2b8093a094"
+        }
+      ]
+    },
+    {
+      "_id": "1506a797-4051-420a-bdde-1d2b8093a094",
+      "type": "IntentClassification",
+      "config": {
+        "name": "Intent Classification",
+        "description": "Classify the intent of the user message",
+        "modelId": "gpt-4o-mini",
+        "intents": [
+          {
+            "name": "Generate Invoice Summary",
+            "description": "Extract details from uploaded document and creates a structured summary of the document based on the extracted details, including a breakdown of line items .",
+            "examples": [
+              "Summarize the details from the image.",
+              "Provide a summary of the document."
+            ]
+          }
+        ],
+        "query": "$agent.query"
+      },
+      "transitions": [
+        {
+          "_id": "1506a797-4051-420a-bdde-1d2b8093a094-802682e7-8172-4cc3-abe6-81a7294aca5e",
+          "name": "If Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intentMatched",
+              "value": "true"
+            }
+          ],
+          "nextTask": "802682e7-8172-4cc3-abe6-81a7294aca5e"
+        },
+        {
+          "_id": "1506a797-4051-420a-bdde-1d2b8093a094-b6684f04-c95b-4451-b737-2cceba26ba35",
+          "name": "If No Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intentMatched",
+              "value": "false"
+            }
+          ],
+          "nextTask": "b6684f04-c95b-4451-b737-2cceba26ba35"
+        }
+      ]
+    },
+    {
+      "_id": "802682e7-8172-4cc3-abe6-81a7294aca5e",
+      "type": "JSFunction",
+      "config": {
+        "name": "JS Function",
+        "description": "Execute JS function",
+        "code": "\nconst main = () => {\n    const currentExecutionId = _id;\n    const intents = agent?.icIntents?.[currentExecutionId] || input.intents;\n    const currentIndex = agent?.icLoopIndexes?.[currentExecutionId] || 0;\n    const currentIntent = intents[currentIndex] || {};\n    const { intent, task } = currentIntent;\n    const state = currentIndex === intents.length ? 'end' : 'continue'\n    const icLoopIndexes = { ...(agent?.icLoopIndexes || {}), [_id]: state === 'end' ? undefined : currentIndex + 1 };\n    const icIntents = { ...(agent?.icIntents || {}), [_id]: state === 'end' ? undefined : intents };\n    return { ...input, intent, state: currentIndex === intents.length ? 'end' : 'continue', icLoopIndexes, icIntents, query: task };\n};\n\nmain()\n"
+      },
+      "globalVariables": [
+        {
+          "referencePath": "$output.icLoopIndexes",
+          "name": "icLoopIndexes"
+        },
+        {
+          "referencePath": "$output.icIntents",
+          "name": "icIntents"
+        }
+      ],
+      "transitions": [
+        {
+          "_id": "802682e7-8172-4cc3-abe6-81a7294aca5e-57d1178d-2086-4cfb-b317-2571dcfb0c5b",
+          "name": "If Intent is Matched",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.intent",
+              "value": "Generate Invoice Summary"
+            }
+          ],
+          "nextTask": "57d1178d-2086-4cfb-b317-2571dcfb0c5b"
+        },
+        {
+          "_id": "802682e7-8172-4cc3-abe6-81a7294aca5e-138d1dee-1c65-4dcb-8fe2-90ab7b0fb521",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            },
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$output.state",
+              "value": "end"
+            }
+          ],
+          "nextTask": "138d1dee-1c65-4dcb-8fe2-90ab7b0fb521"
+        }
+      ]
+    },
+    {
+      "_id": "57d1178d-2086-4cfb-b317-2571dcfb0c5b",
+      "type": "Workflow",
+      "config": {
+        "name": "Intent - Generate Invoice Summary",
+        "description": "Workflow for intent - Generate Invoice Summary",
+        "workflowId": "2e4a2df9-16c7-4658-b2f7-ac47baf7fe11"
+      },
+      "transitions": [
+        {
+          "_id": "57d1178d-2086-4cfb-b317-2571dcfb0c5b-802682e7-8172-4cc3-abe6-81a7294aca5e",
+          "name": "Mini agent execution completed",
+          "nextTask": "802682e7-8172-4cc3-abe6-81a7294aca5e"
+        }
+      ]
+    },
+    {
+      "_id": "b6684f04-c95b-4451-b737-2cceba26ba35",
+      "transitions": [
+        {
+          "_id": "b6684f04-c95b-4451-b737-2cceba26ba35-138d1dee-1c65-4dcb-8fe2-90ab7b0fb521",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            }
+          ],
+          "nextTask": "138d1dee-1c65-4dcb-8fe2-90ab7b0fb521"
+        }
+      ],
+      "type": "Output",
+      "config": {
+        "name": "Output",
+        "description": "Output the response to the user",
+        "type": "external",
+        "text": "Unable to complete task $agent.query"
+      }
+    },
+    {
+      "_id": "4131c3dd-53b7-4856-807d-1ca14917a5a5",
+      "transitions": [
+        {
+          "_id": "4131c3dd-53b7-4856-807d-1ca14917a5a5-138d1dee-1c65-4dcb-8fe2-90ab7b0fb521",
+          "name": "If Self Loop",
+          "rules": [
+            {
+              "type": "string",
+              "operator": "equal",
+              "path": "$agent.selfLoopMiniAgent",
+              "value": "true"
+            }
+          ],
+          "nextTask": "138d1dee-1c65-4dcb-8fe2-90ab7b0fb521"
+        }
+      ],
+      "type": "Display",
+      "config": {
+        "name": "Display",
+        "description": "Display the response to the user",
+        "type": "text",
+        "text": "$input.content"
+      }
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}

@@ -1,0 +1,7 @@
+{
+  "_id": "e0939a34-8ff2-4d36-b0ff-669527a6bf0b",
+  "aiPersonaId": "41206f59-d198-4e7c-b2e7-4393c5e4e141",
+  "code": "const main = () => {\n    // Assuming input is defined elsewhere\n    return {\n        result: input.imagesResult.flatMap(imageRecord =>\n            imageRecord.images.map(img => img.documentId)\n        ).join(\", \")\n    };\n};\n\nmain();\n",
+  "name": "ImageToDocumentProcessor",
+  "status": "Active"
+}

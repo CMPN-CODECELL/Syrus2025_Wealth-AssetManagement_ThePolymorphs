@@ -1,0 +1,26 @@
+{
+  "_id": "2cb23b7b-549a-4528-950a-2710cfd6dc96",
+  "aiPersonaId": "41206f59-d198-4e7c-b2e7-4393c5e4e141",
+  "integrationId": "invoice-image-processing-8790-1743161595136",
+  "intentClassification": {
+    "modelId": "gpt-4o-mini"
+  },
+  "intents": [
+    {
+      "_id": "generate-invoice-summary-8790",
+      "name": "Generate Invoice Summary",
+      "description": "Extract details from uploaded document and creates a structured summary of the document based on the extracted details, including a breakdown of line items .",
+      "examples": [
+        "Summarize the details from the image.",
+        "Provide a summary of the document."
+      ],
+      "flowType": "Workflow",
+      "workflowId": "2e4a2df9-16c7-4658-b2f7-ac47baf7fe11"
+    }
+  ],
+  "name": "Invoice Summary",
+  "primaryWorkflowId": "868956ba-0823-46a1-8c3f-411fccc9f319",
+  "publisherAccountId": "f9da4f51-27cd-46a7-bf5e-98aa8046f152",
+  "scope": "Extract structured data from the uploaded invoice document. Identify and extract the following key details:\n\nInvoice Metadata: Invoice Number, Invoice Date, Due Date, Currency Type.\n\nVendor & Customer Information: Vendor Name, Vendor Address, Vendor Contact Details, Customer Name, Customer Address.\n\nLine Items: Item Description, Quantity, Unit Price, Total Price per item, Tax Details.\n\nFinancial Summary: Subtotal, Tax Amount, Discounts, Grand Total, Payment Terms.\n\nAdditional Information: Invoice Notes, Payment Method, Any Other Relevant Data.\n\nReturn the extracted details in structured JSON format for easy parsing and further processing.\n\nModify such that I get the same subagent for every wquestion in uptiq",
+  "status": "Active"
+}

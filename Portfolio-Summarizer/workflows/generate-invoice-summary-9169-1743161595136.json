@@ -1,0 +1,370 @@
+{
+  "_id": "2e4a2df9-16c7-4658-b2f7-ac47baf7fe11",
+  "aiPersonaId": "41206f59-d198-4e7c-b2e7-4393c5e4e141",
+  "integrationId": "generate-invoice-summary-9169-1743161595136",
+  "name": "Workflow for Generate Invoice Summary",
+  "publisherAccountId": "f9da4f51-27cd-46a7-bf5e-98aa8046f152",
+  "reactflow": {
+    "viewport": {
+      "x": 40.626505426999074,
+      "y": 131.10944794398102,
+      "zoom": 0.6393997451285133
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 273.79713916967916,
+          "y": -8.349174956322152
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 290,
+          "height": 136
+        },
+        "selected": false
+      },
+      {
+        "position": {
+          "x": 1146.1311996224165,
+          "y": -98.68415334486093
+        },
+        "type": "DocumentUpload",
+        "id": "1739549232988",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1079.5874489615935,
+          "y": 455.8651875986773
+        },
+        "type": "Prompt",
+        "id": "1739549434068",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 759.5874489615935,
+          "y": -107.64421175749379
+        },
+        "type": "Loader",
+        "id": "1743161622383",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 628.1226809454109,
+          "y": 468.13837259498746
+        },
+        "type": "Display",
+        "id": "1743162852262",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 790.2094362442449,
+          "y": 54.11795052404515
+        },
+        "type": "DocumentToImage",
+        "id": "1743175206014",
+        "data": {},
+        "measured": {
+          "width": 277,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 807.2094362442449,
+          "y": 215.74974361876525
+        },
+        "type": "JSFunction",
+        "id": "1743175256720",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1743180299861",
+        "type": "Display",
+        "position": {
+          "x": 1560,
+          "y": -60
+        },
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-1743161622383",
+        "type": "Start",
+        "source": "0",
+        "target": "1743161622383",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "0-source-1",
+        "targetHandle": "1743161622383-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1739549232988-1743175206014",
+        "source": "1739549232988",
+        "target": "1743175206014",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1739549232988-source-3",
+        "targetHandle": "1743175206014-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743161622383-1739549232988",
+        "source": "1743161622383",
+        "target": "1739549232988",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743161622383-source-1",
+        "targetHandle": "1739549232988-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743162852262-1739549434068",
+        "source": "1743162852262",
+        "target": "1739549434068",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743162852262-source-1",
+        "targetHandle": "1739549434068-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743175206014-1743175256720",
+        "source": "1743175206014",
+        "target": "1743175256720",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743175206014-source-3",
+        "targetHandle": "1743175256720-target-2",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743175256720-1739549434068",
+        "source": "1743175256720",
+        "target": "1739549434068",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743175256720-source-3",
+        "targetHandle": "1739549434068-target-2",
+        "selected": false
+      },
+      {
+        "id": "1739549232988-1743180299861",
+        "source": "1739549232988",
+        "target": "1743180299861",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1739549232988-source-1",
+        "targetHandle": "1743180299861-target-1",
+        "selected": false
+      }
+    ]
+  },
+  "startTaskId": "1743161622383",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "1739549232988",
+      "type": "DocumentUpload",
+      "config": {
+        "description": "Upload document",
+        "name": "Upload Document",
+        "uploadTo": "conversation",
+        "uploadMethod": "UserInput",
+        "supportedFileTypes": [
+          "pdf"
+        ],
+        "signedURL": "s3://smartwater-application/invoice4.jpg",
+        "displayMessage": "I am ready. Please provide your document."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1739549232988-1743175206014",
+          "nextTask": "1743175206014"
+        },
+        {
+          "name": "Default",
+          "_id": "1739549232988-1743180299861",
+          "nextTask": "1743180299861"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "documentId",
+          "referencePath": "$output.documentId"
+        }
+      ]
+    },
+    {
+      "_id": "1739549434068",
+      "type": "Prompt",
+      "config": {
+        "description": "Prompt for LLM",
+        "name": "Prompt",
+        "modelId": "56feb720-adb7-464a-8e6b-fd79a510ba5b",
+        "responseFormat": "text",
+        "systemPrompt": "You are an Al assistant specialized in summarizing legal documents, primarily contracts and agreements. Your task is to generate structured summaries, key action items, and simplified explanations in plain language. \nOutput Structure: \nBrief Summary - A concise overview of the document's purpose and key clauses. \nKey Action Items-Extracted obligations, deadlines, and responsibilities for involved parties. \nSimplified Explanation-A user-friendly breakdown of \ncomplex legal terms and clauses. \nGuidelines: \nMaintain accuracy while simplifying legal jargon. \nHighlight important clauses such as payment terms. \nobligations, termination conditions, and penalties. \nPresent information in bullet points for clarity. \nIf any section is unclear or missing details, indicate the ambiguity. \nYour goal is to make legal documents easier to understand and actionable while preserving essential details",
+        "query": "Generate summary of the given documen",
+        "documentIds": "$input.result",
+        "base64DocumentData": "",
+        "temperature": null
+      },
+      "transitions": []
+    },
+    {
+      "_id": "1743161622383",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader (1)",
+        "text": "Let's get your document ready. Please provide with the document."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743161622383-1739549232988",
+          "nextTask": "1739549232988"
+        }
+      ]
+    },
+    {
+      "_id": "1743162852262",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display",
+        "type": "text",
+        "text": "$input.content",
+        "rawText": "$input.content",
+        "formatVariables": []
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743162852262-1739549434068",
+          "nextTask": "1739549434068"
+        }
+      ]
+    },
+    {
+      "_id": "1743175206014",
+      "type": "DocumentToImage",
+      "config": {
+        "description": "Convert document to Images",
+        "name": "Document To Image",
+        "documentId": "$agent.documentId"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743175206014-1743175256720",
+          "nextTask": "1743175256720"
+        }
+      ]
+    },
+    {
+      "_id": "1743175256720",
+      "type": "JSFunction",
+      "config": {
+        "description": "Execute JavaScript code",
+        "name": "JavaScript",
+        "snippetId": "e0939a34-8ff2-4d36-b0ff-669527a6bf0b"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743175256720-1739549434068",
+          "nextTask": "1739549434068"
+        }
+      ]
+    },
+    {
+      "_id": "1743180299861",
+      "type": "Display",
+      "config": {
+        "name": "Display (1)",
+        "description": "Show data",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p>Document uploaded successfully!</p>",
+        "rawText": "Document uploaded successfully!"
+      },
+      "transitions": []
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest"
+}

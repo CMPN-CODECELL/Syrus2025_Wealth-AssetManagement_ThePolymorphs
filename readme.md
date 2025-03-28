@@ -27,6 +27,8 @@ The `AI Agents` folder contains four subfolders, each representing a specialized
        - **Moderate Risk**: Hybrid Funds, Index Funds.
        - **High Risk**: Equity, Thematic Funds, ETFs, Stocks.
      - Dynamically adjusts recommendations based on market conditions and user inputs.
+     - Considers multiple asset types, including tangible assets like gold and property, to diversify investments.
+     - Instead of asking users directly for the monthly investment value, it suggests how much should be invested monthly to achieve their financial goals.
    - **Workflows**:
      - `input-processing-5946.json`: Captures and processes user inputs.
      - `ma-goal-based-investing-5511-primary-workflow-for-goal-based-investing.json`: Primary workflow for goal-based investing.
@@ -37,6 +39,7 @@ The `AI Agents` folder contains four subfolders, each representing a specialized
    - **Features**:
      - Aggregates data from various sources and analyzes portfolio performance.
      - Identifies underperforming assets and recommends optimal asset allocation.
+     - Considers multiple asset types, including tangible assets like gold and property, to ensure a diversified portfolio.
      - Uses **Retrieval Augmented Generation (RAG)** techniques for advanced data processing.
    - **Workflows**:
      - `ma-portfolio-rebalancing-suggestions-0864-primary-workflow-for-portfolio-rebalancing-suggestions.json`: Generates rebalancing suggestions.
@@ -76,6 +79,18 @@ The `FinWise` folder contains the frontend interface for interacting with the AI
 - `index.html`: The main entry point for the website.
 - `vite.config.js`: Configuration for the Vite build tool.
 - `tailwind.config.js`: Tailwind CSS configuration for styling.
+
+---
+
+## Suggested Improvements
+
+### Suggestions:
+1. Diversify assets by including other tangible assets like gold and property.
+2. Instead of asking users directly for the monthly investment value, suggest how much should be invested monthly in the goal-based investment planning.
+
+### Implemented:
+1. Multiple asset types, including tangible assets like gold and property, are now considered in the **Goal-Based Investment Planner** and **Portfolio Rebalancing Agent**.
+2. The **Goal-Based Investment Planner** now suggests the required monthly investment amount instead of asking users to input it directly.
 
 ---
 

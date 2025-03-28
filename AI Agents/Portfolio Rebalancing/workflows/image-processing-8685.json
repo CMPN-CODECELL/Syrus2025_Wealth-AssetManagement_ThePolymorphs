@@ -1,0 +1,373 @@
+{
+  "_id": "7d3f82b2-1f74-4880-afe8-0bb15555088b",
+  "aiPersonaId": "8c1f2df4-2053-4020-8cb8-3b77757a6f4d",
+  "integrationId": "image-processing-8685",
+  "name": "Workflow for Image Processing",
+  "publisherAccountId": "c7fc4684-139f-4cf7-a9e5-10f08cfed9b0",
+  "startTaskId": "1743135453647",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "39359ac3-f972-4fe7-8f51-5742158efeb3",
+      "type": "Display",
+      "config": {
+        "description": "Display the response to the user",
+        "name": "Display",
+        "type": "text",
+        "text": "<p>Hi there! Intent $input.intent has been matched</p><p></p><p>Input content is</p><p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"input.content\">$input.content</span></p>",
+        "formatVariables": [],
+        "rawText": "Hi there! Intent $input.intent has been matched\n\nInput content is\n\n$input.content"
+      },
+      "transitions": []
+    },
+    {
+      "_id": "1743089164956",
+      "type": "DocumentUpload",
+      "config": {
+        "description": "Upload document",
+        "name": "Upload Document ",
+        "uploadTo": "conversation",
+        "uploadMethod": "UserInput",
+        "supportedFileTypes": [
+          "pdf"
+        ],
+        "displayMessage": "Upload your Portfolio PDF to perform Analysis."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743089164956-1743153853055",
+          "nextTask": "1743153853055"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "documentId",
+          "referencePath": "$output.documentId"
+        }
+      ]
+    },
+    {
+      "_id": "1743089753529",
+      "type": "Prompt",
+      "config": {
+        "description": "Prompt for LLM",
+        "name": "Prompt",
+        "modelId": "56feb720-adb7-464a-8e6b-fd79a510ba5b",
+        "base64DocumentData": "",
+        "documentIds": "$input.result",
+        "responseFormat": "json",
+        "query": "Extract the text from the Documents. ",
+        "systemPrompt": "You are an AI assistant specialized in extracting text from various document formats, including images, PDFs, DOCX, and TXT files. Your task is to accurately perform Optical Character Recognition (OCR) on images and extract readable text from document files.  \n\nOutput Structure:  \n- **Extracted Text** - The full text extracted from the provided file.  \n\nGuidelines:  \n- Ensure accuracy in text extraction, preserving formatting where possible.  \n- Process and extract content from scanned images, printed documents, or digital text files.  \n- Handle multiple file types while maintaining structured and readable output.  \n- If text is unclear or unreadable, indicate potential gaps or missing content.  \n",
+        "temperature": null,
+        "numOfConversationTurns": null
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743089753529-39359ac3-f972-4fe7-8f51-5742158efeb3",
+          "nextTask": "39359ac3-f972-4fe7-8f51-5742158efeb3"
+        }
+      ],
+      "globalVariables": []
+    },
+    {
+      "_id": "1743135453647",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader",
+        "text": "I am Ready to Process your Document."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743135453647-1743089164956",
+          "nextTask": "1743089164956"
+        }
+      ]
+    },
+    {
+      "_id": "1743135551423",
+      "type": "JSFunction",
+      "config": {
+        "description": "Execute JavaScript code",
+        "name": "JavaScript",
+        "snippetId": "bf8c87c5-026c-42cd-a7b0-b047555a7630"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743135551423-1743089753529",
+          "nextTask": "1743089753529"
+        }
+      ]
+    },
+    {
+      "_id": "1743135559832",
+      "type": "DocumentToImage",
+      "config": {
+        "description": "Convert document to Images",
+        "name": "Document To Image",
+        "documentId": "$agent.documentId"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743135559832-1743135551423",
+          "nextTask": "1743135551423"
+        }
+      ]
+    },
+    {
+      "_id": "1743153853055",
+      "type": "Display",
+      "config": {
+        "description": "Show data",
+        "name": "Display (1)",
+        "formatVariables": [],
+        "type": "text",
+        "text": "<p>PDF File uploaded at <span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.documentId\">$agent.documentId</span> </p>",
+        "rawText": "PDF File uploaded at $agent.documentId"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743153853055-1743135559832",
+          "nextTask": "1743135559832"
+        }
+      ]
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": -452.7010073872084,
+      "y": -33.48832885791518,
+      "zoom": 0.9457951458311834
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 717.5528793846528,
+          "y": 365.31635281164125
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 270,
+          "height": 136
+        },
+        "selected": false
+      },
+      {
+        "position": {
+          "x": 1865.1656400518998,
+          "y": 700.8910269189873
+        },
+        "type": "Display",
+        "id": "39359ac3-f972-4fe7-8f51-5742158efeb3",
+        "data": {},
+        "measured": {
+          "width": 298,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1196.6468213126896,
+          "y": 287.31635281164125
+        },
+        "type": "DocumentUpload",
+        "id": "1743089164956",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1740.9152915437387,
+          "y": 553.6271483152353
+        },
+        "type": "Prompt",
+        "id": "1743089753529",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1182.9216170402858,
+          "y": 118.2151139934358
+        },
+        "type": "Loader",
+        "id": "1743135453647",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1683.406684453716,
+          "y": 433.33469188182113
+        },
+        "type": "JSFunction",
+        "id": "1743135551423",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1625.8103676297817,
+          "y": 321.7839142346639
+        },
+        "type": "DocumentToImage",
+        "id": "1743135559832",
+        "data": {},
+        "measured": {
+          "width": 277,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1625.8103676297817,
+          "y": 185.48419730248185
+        },
+        "type": "Display",
+        "id": "1743153853055",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-1743135453647",
+        "type": "Start",
+        "source": "0",
+        "target": "1743135453647",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "0-source-1",
+        "targetHandle": "1743135453647-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743089164956-1743153853055",
+        "source": "1743089164956",
+        "target": "1743153853055",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743089164956-source-1",
+        "targetHandle": "1743153853055-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743089753529-39359ac3-f972-4fe7-8f51-5742158efeb3",
+        "source": "1743089753529",
+        "target": "39359ac3-f972-4fe7-8f51-5742158efeb3",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743089753529-source-1",
+        "targetHandle": "39359ac3-f972-4fe7-8f51-5742158efeb3-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743135453647-1743089164956",
+        "source": "1743135453647",
+        "target": "1743089164956",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743135453647-source-1",
+        "targetHandle": "1743089164956-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743135551423-1743089753529",
+        "source": "1743135551423",
+        "target": "1743089753529",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743135551423-source-1",
+        "targetHandle": "1743089753529-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743135559832-1743135551423",
+        "source": "1743135559832",
+        "target": "1743135551423",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743135559832-source-1",
+        "targetHandle": "1743135551423-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743153853055-1743135559832",
+        "source": "1743153853055",
+        "target": "1743135559832",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743153853055-source-1",
+        "targetHandle": "1743135559832-target-1",
+        "selected": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "_id": "be110687-d250-446e-8908-d2cd19a236d9",
+  "aiPersonaId": "8c1f2df4-2053-4020-8cb8-3b77757a6f4d",
+  "integrationId": "stock-symbol-processing-0432",
+  "name": "Workflow for Stock Symbol Processing",
+  "publisherAccountId": "c7fc4684-139f-4cf7-a9e5-10f08cfed9b0",
+  "startTaskId": "1743164739476",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "026cecd8-bb9f-457b-983c-f6c96637179e",
+      "type": "Display",
+      "config": {
+        "description": "Display the response to the user",
+        "name": "Display",
+        "type": "text",
+        "text": "<p>Successfully Fetched Data from both the List <br><br><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.losersListInfo\">$agent.losersListInfo</span> </p><p></p><p><span class=\"text-inherit p-0 m-0 text-primary-dark bg-primary-light/80\" data-type=\"mention\" data-id=\"agent.gainersListInfo\">$agent.gainersListInfo</span> </p>",
+        "formatVariables": [],
+        "rawText": "Successfully Fetched Data from both the List \n\n$agent.losersListInfo \n\n$agent.gainersListInfo"
+      },
+      "transitions": []
+    },
+    {
+      "_id": "1743163824487",
+      "type": "APICall",
+      "config": {
+        "description": "Make an API call",
+        "name": "API Call",
+        "url": "https://financialmodelingprep.com/api/v3/quote/$agent.gainersList?apikey=V2uSuG28X5CQWWmgVMdZXZmwwKVQEZBL",
+        "data": "",
+        "dataFormat": "raw",
+        "rawDataFormatType": "text",
+        "headers": [],
+        "params": [],
+        "method": "GET"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743163824487-1743180163030",
+          "nextTask": "1743180163030"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "gainersListInfo",
+          "referencePath": "$output.data"
+        }
+      ]
+    },
+    {
+      "_id": "1743164739476",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader",
+        "text": "I am processing Information for the fetched Gainer stocks "
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743164739476-1743163824487",
+          "nextTask": "1743163824487"
+        }
+      ]
+    },
+    {
+      "_id": "1743179801326",
+      "type": "APICall",
+      "config": {
+        "description": "Make an API call",
+        "name": "API Call (1)",
+        "url": "https://financialmodelingprep.com/api/v3/quote/$agent.losersList?apikey=V2uSuG28X5CQWWmgVMdZXZmwwKVQEZBL",
+        "data": "",
+        "dataFormat": "raw",
+        "rawDataFormatType": "text",
+        "headers": [],
+        "params": [],
+        "method": "GET"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743179801326-1743180419333",
+          "nextTask": "1743180419333"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "losersListInfo",
+          "referencePath": "$output.data"
+        }
+      ]
+    },
+    {
+      "_id": "1743180029087",
+      "type": "Loader",
+      "config": {
+        "name": "Loader (1)",
+        "description": "Show loading messages in conversation",
+        "text": "I am processing Information for the fetched Looser stocks."
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743180029087-1743179801326",
+          "nextTask": "1743179801326"
+        }
+      ]
+    },
+    {
+      "_id": "1743180163030",
+      "type": "Prompt",
+      "config": {
+        "name": "Prompt",
+        "description": "Prompt for LLM",
+        "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b",
+        "base64DocumentData": "",
+        "documentIds": "",
+        "responseFormat": "json",
+        "query": "ou are a financial analysis assistant specializing in equity markets and portfolio rebalancing. Your task is to review and summarize detailed stock data for all important stocks provided in the dataset. Focus on extracting and presenting the most critical information in a concise format. Include key metrics such as stock symbols, current prices, percentage changes, trading volumes, and any notable performance trends or risk indicators that could affect portfolio decisions. Format your final summary in a structured, clear manner that highlights each stock’s essential metrics for easy comparison and analysis. This summary will be used to inform portfolio rebalancing, so every detail must be relevant, precise, and actionable. $age",
+        "systemPrompt": "You are a financial analysis assistant specializing in equity markets and portfolio rebalancing. Your task is to review and summarize detailed stock data for all important stocks in the provided dataset. Focus on extracting and presenting the most critical information in a concise format. The summary should include key metrics such as stock symbols, current prices, percentage changes, trading volumes, and any notable performance trends or risk indicators that could affect portfolio decisions. Your output will be used to inform portfolio rebalancing decisions, so ensure that every piece of information is relevant, precise, and actionable. Please format your final summary in a structured manner that highlights each stock’s key metrics for easy comparison and analysis.",
+        "temperature": null
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743180163030-1743180029087",
+          "nextTask": "1743180029087"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "gainersListInfo",
+          "referencePath": "$output.content"
+        }
+      ]
+    },
+    {
+      "_id": "1743180419333",
+      "type": "Prompt",
+      "config": {
+        "name": "Prompt (1)",
+        "description": "Prompt for LLM",
+        "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b",
+        "systemPrompt": "You are a financial analysis assistant specializing in equity markets and portfolio rebalancing. Your task is to review and summarize detailed stock data for all important stocks in the provided dataset. Focus on extracting and presenting the most critical information in a concise format. The summary should include key metrics such as stock symbols, current prices, percentage changes, trading volumes, and any notable performance trends or risk indicators that could affect portfolio decisions. Your output will be used to inform portfolio rebalancing decisions, so ensure that every piece of information is relevant, precise, and actionable. Please format your final summary in a structured manner that highlights each stock’s key metrics for easy comparison and analysis.",
+        "base64DocumentData": "",
+        "documentIds": "",
+        "responseFormat": "json",
+        "query": "ou are a financial analysis assistant specializing in equity markets and portfolio rebalancing. Your task is to review and summarize detailed stock data for all important stocks provided in the dataset. Focus on extracting and presenting the most critical information in a concise format. Include key metrics such as stock symbols, current prices, percentage changes, trading volumes, and any notable performance trends or risk indicators that could affect portfolio decisions. Format your final summary in a structured, clear manner that highlights each stock’s essential metrics for easy comparison and analysis. This summary will be used to inform portfolio rebalancing, so every detail must be relevant, precise, and actionable. $agent.losersListInfo",
+        "temperature": null
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743180419333-026cecd8-bb9f-457b-983c-f6c96637179e",
+          "nextTask": "026cecd8-bb9f-457b-983c-f6c96637179e"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "losersListInfo",
+          "referencePath": "$output.content"
+        }
+      ]
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": 227.42149285944947,
+      "y": 96.56640734904204,
+      "zoom": 0.8600545067752512
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 173.6700847104542,
+          "y": 105.10043446662257
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 278,
+          "height": 136
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1156.6643122827718,
+          "y": 657.2812157742097
+        },
+        "type": "Display",
+        "id": "026cecd8-bb9f-457b-983c-f6c96637179e",
+        "data": {},
+        "measured": {
+          "width": 298,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 451.6700847104542,
+          "y": 392.78356195532695
+        },
+        "type": "APICall",
+        "id": "1743163824487",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 303.81160922950994,
+          "y": 288.80886864073136
+        },
+        "type": "Loader",
+        "id": "1743164739476",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 896.6643122827717,
+          "y": 392.78356195532695
+        },
+        "type": "APICall",
+        "id": "1743179801326",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1743180029087",
+        "type": "Loader",
+        "position": {
+          "x": 844.9710745259976,
+          "y": 288.80886864073136
+        },
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1743180163030",
+        "type": "Prompt",
+        "position": {
+          "x": 545.1134723095133,
+          "y": 507.562372836545
+        },
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1743180419333",
+        "type": "Prompt",
+        "position": {
+          "x": 975.8186888468736,
+          "y": 507.562372836545
+        },
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-1743164739476",
+        "type": "Start",
+        "source": "0",
+        "target": "1743164739476",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "0-source-1",
+        "targetHandle": "1743164739476-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743164739476-1743163824487",
+        "source": "1743164739476",
+        "target": "1743163824487",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743164739476-source-1",
+        "targetHandle": "1743163824487-target-1",
+        "selected": false
+      },
+      {
+        "id": "1743180029087-1743179801326",
+        "source": "1743180029087",
+        "target": "1743179801326",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743180029087-source-1",
+        "targetHandle": "1743179801326-target-1",
+        "selected": false
+      },
+      {
+        "id": "1743163824487-1743180163030",
+        "source": "1743163824487",
+        "target": "1743180163030",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743163824487-source-1",
+        "targetHandle": "1743180163030-target-1",
+        "selected": false
+      },
+      {
+        "id": "1743180163030-1743180029087",
+        "source": "1743180163030",
+        "target": "1743180029087",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743180163030-source-1",
+        "targetHandle": "1743180029087-target-1",
+        "selected": false
+      },
+      {
+        "id": "1743179801326-1743180419333",
+        "source": "1743179801326",
+        "target": "1743180419333",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743179801326-source-1",
+        "targetHandle": "1743180419333-target-1",
+        "selected": false
+      },
+      {
+        "id": "1743180419333-026cecd8-bb9f-457b-983c-f6c96637179e",
+        "source": "1743180419333",
+        "target": "026cecd8-bb9f-457b-983c-f6c96637179e",
+        "type": "Transition",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743180419333-source-1",
+        "targetHandle": "026cecd8-bb9f-457b-983c-f6c96637179e-target-1",
+        "selected": false
+      }
+    ]
+  }
+}

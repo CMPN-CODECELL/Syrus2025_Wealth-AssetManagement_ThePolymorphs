@@ -1,0 +1,388 @@
+{
+  "_id": "6c8c9acf-ef21-48dd-bf8a-01ac730c99b1",
+  "aiPersonaId": "8c1f2df4-2053-4020-8cb8-3b77757a6f4d",
+  "integrationId": "top-performing-stock-5203",
+  "name": "Workflow for Top Performing Stock",
+  "publisherAccountId": "c7fc4684-139f-4cf7-a9e5-10f08cfed9b0",
+  "startTaskId": "1743160022147",
+  "status": "Active",
+  "tasks": [
+    {
+      "_id": "1743158417866",
+      "type": "APICall",
+      "config": {
+        "description": "Make an API call",
+        "name": "API Call",
+        "url": "https://financialmodelingprep.com/stable/biggest-gainers?apikey=V2uSuG28X5CQWWmgVMdZXZmwwKVQEZBL",
+        "data": "",
+        "dataFormat": "raw",
+        "rawDataFormatType": "text",
+        "headers": [],
+        "params": [],
+        "method": "GET"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743158417866-1743159229040",
+          "nextTask": "1743159229040"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "top_performing_stocks_api_response",
+          "referencePath": "$output.data"
+        }
+      ]
+    },
+    {
+      "_id": "1743159229040",
+      "type": "JSFunction",
+      "config": {
+        "description": "Execute JavaScript code",
+        "name": "JavaScript",
+        "snippetId": "5b969ad3-45e4-4807-99a0-7445df96aaa8"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743159229040-1743177377456",
+          "nextTask": "1743177377456"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "topGainers",
+          "referencePath": "$output.result"
+        },
+        {
+          "name": "gainersList",
+          "referencePath": "$output.symbolList"
+        }
+      ]
+    },
+    {
+      "_id": "1743160022147",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader",
+        "text": "Processing the Gainers or Good performing stocks"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743160022147-1743158417866",
+          "nextTask": "1743158417866"
+        }
+      ]
+    },
+    {
+      "_id": "1743161241137",
+      "type": "APICall",
+      "config": {
+        "description": "Make an API call",
+        "name": "API Call (1)",
+        "url": "https://financialmodelingprep.com/stable/biggest-losers?apikey=V2uSuG28X5CQWWmgVMdZXZmwwKVQEZBL",
+        "data": "",
+        "dataFormat": "raw",
+        "rawDataFormatType": "text",
+        "headers": [],
+        "params": [],
+        "method": "GET"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743161241137-1743161289448",
+          "nextTask": "1743161289448"
+        }
+      ]
+    },
+    {
+      "_id": "1743161289448",
+      "type": "JSFunction",
+      "config": {
+        "description": "Execute JavaScript code",
+        "name": "JavaScript (1)",
+        "snippetId": "5b969ad3-45e4-4807-99a0-7445df96aaa8"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743161289448-1743165967818",
+          "nextTask": "1743165967818"
+        }
+      ],
+      "globalVariables": [
+        {
+          "name": "topLosers",
+          "referencePath": "$output.result"
+        },
+        {
+          "name": "losersList",
+          "referencePath": "$output.symbolList"
+        }
+      ]
+    },
+    {
+      "_id": "1743165967818",
+      "type": "Output",
+      "config": {
+        "description": "Output messages in conversation",
+        "name": "Output",
+        "text": "Can you fetch detailed stock information for all the symbols from the top gainers and losers list?",
+        "type": "internal",
+        "formattingInstructions": ""
+      },
+      "transitions": []
+    },
+    {
+      "_id": "1743177377456",
+      "type": "Loader",
+      "config": {
+        "description": "Show loading messages in conversation",
+        "name": "Loader (1)",
+        "text": "Processing the looser or low processing stocks"
+      },
+      "transitions": [
+        {
+          "name": "Default",
+          "_id": "1743177377456-1743161241137",
+          "nextTask": "1743161241137"
+        }
+      ]
+    }
+  ],
+  "type": "Conversational",
+  "version": "latest",
+  "reactflow": {
+    "viewport": {
+      "x": 202.84353647322132,
+      "y": 113.51681064277335,
+      "zoom": 0.7022224378689997
+    },
+    "nodes": [
+      {
+        "id": "0",
+        "type": "Start",
+        "position": {
+          "x": 292.05702281200706,
+          "y": 0.19379441337764547
+        },
+        "data": {},
+        "deletable": false,
+        "measured": {
+          "width": 270,
+          "height": 136
+        },
+        "selected": false
+      },
+      {
+        "position": {
+          "x": 450.9811075554355,
+          "y": 299.5994181932794
+        },
+        "type": "APICall",
+        "id": "1743158417866",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 532.1122797073267,
+          "y": 394.26030516402403
+        },
+        "type": "JSFunction",
+        "id": "1743159229040",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 364.07435662687254,
+          "y": 204.99782629802638
+        },
+        "type": "Loader",
+        "id": "1743160022147",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 915.4543263957494,
+          "y": 267.3332741464586
+        },
+        "type": "APICall",
+        "id": "1743161241137",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1007.4164033152952,
+          "y": 394.26030516402403
+        },
+        "type": "JSFunction",
+        "id": "1743161289448",
+        "data": {},
+        "measured": {
+          "width": 260,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 1130.707584537976,
+          "y": 581.8671310270842
+        },
+        "type": "Output",
+        "id": "1743165967818",
+        "data": {},
+        "measured": {
+          "width": 307,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "position": {
+          "x": 841.9937255503662,
+          "y": 147.908956735993
+        },
+        "type": "Loader",
+        "id": "1743177377456",
+        "data": {},
+        "measured": {
+          "width": 320,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "0-1743160022147",
+        "type": "Start",
+        "source": "0",
+        "target": "1743160022147",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "0-source-1",
+        "targetHandle": "1743160022147-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743158417866-1743159229040",
+        "source": "1743158417866",
+        "target": "1743159229040",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743158417866-source-1",
+        "targetHandle": "1743159229040-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743159229040-1743177377456",
+        "source": "1743159229040",
+        "target": "1743177377456",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743159229040-source-1",
+        "targetHandle": "1743177377456-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743160022147-1743158417866",
+        "source": "1743160022147",
+        "target": "1743158417866",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743160022147-source-1",
+        "targetHandle": "1743158417866-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743161241137-1743161289448",
+        "source": "1743161241137",
+        "target": "1743161289448",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743161241137-source-1",
+        "targetHandle": "1743161289448-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743161289448-1743165967818",
+        "source": "1743161289448",
+        "target": "1743165967818",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743161289448-source-1",
+        "targetHandle": "1743165967818-target-1",
+        "selected": false
+      },
+      {
+        "type": "Transition",
+        "id": "1743177377456-1743161241137",
+        "source": "1743177377456",
+        "target": "1743161241137",
+        "markerEnd": {
+          "type": "arrowclosed",
+          "width": 22,
+          "height": 22
+        },
+        "sourceHandle": "1743177377456-source-1",
+        "targetHandle": "1743161241137-target-1",
+        "selected": false
+      }
+    ]
+  }
+}

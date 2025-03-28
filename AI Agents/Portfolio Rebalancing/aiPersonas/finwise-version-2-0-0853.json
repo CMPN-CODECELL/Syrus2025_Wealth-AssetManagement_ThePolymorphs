@@ -1,0 +1,194 @@
+{
+  "_id": "8c1f2df4-2053-4020-8cb8-3b77757a6f4d",
+  "description": "Its an Automatic portfolio Rebalancing and Suggestions AI Agent",
+  "inferenceEngine": {
+    "modelId": "8eb6a7ae-c655-4023-a143-36ef18daee75"
+  },
+  "integrationId": "finwise-version-2-0-0853",
+  "integrations": {},
+  "intentClassification": {
+    "modelId": "4cf651d9-edf3-455f-a22e-53cc67fcc07b"
+  },
+  "name": "FinWise Version 2.0",
+  "publisherAccountId": "c7fc4684-139f-4cf7-a9e5-10f08cfed9b0",
+  "status": "Active",
+  "useAsChatbot": true,
+  "variables": {
+    "secrets": [
+      {
+        "_id": "214742ba-a837-4e52-a60d-8e90c7f7dfa6",
+        "name": "STOCK_API_KEY",
+        "value": "",
+        "type": "string",
+        "secured": true
+      }
+    ],
+    "agent": [
+      "documentId",
+      "topGainers",
+      "topLosers",
+      "gainersList",
+      "top_performing_stocks_api_response",
+      "gainersListInfo",
+      "losersList",
+      "losersListInfo"
+    ]
+  },
+  "miniAgentIds": [
+    "569c9894-f460-4651-89bd-04f49c9eeb61",
+    "b27d8b76-2d52-42c7-8b89-0c353734b77f",
+    "1022833f-91f8-4cfc-9ec5-642a1db06292",
+    "6b92ed2d-e672-47c8-a792-3a0b9838e0b9"
+  ],
+  "piiMaskingPatterns": [
+    {
+      "_id": "917cae67-8429-4174-8ca5-aa5963b2c1e5",
+      "type": "EntityRecognizer",
+      "name": "Address",
+      "entityRecognizerId": "a6412cdc-664c-4795-b652-cd3d93659da3",
+      "enabled": true
+    },
+    {
+      "_id": "90c33938-291d-49c8-bfdf-b207039ddb28",
+      "type": "EntityRecognizer",
+      "name": "Zip Code",
+      "entityRecognizerId": "14c8cfcd-4934-4a5c-ad32-a22bbe998be5",
+      "enabled": true
+    },
+    {
+      "_id": "fc0bca32-3a99-4fb4-b0e8-8d5302ca74a0",
+      "type": "EntityRecognizer",
+      "name": "Full Name",
+      "entityRecognizerId": "b4c1e19e-d6d3-4e4d-a341-9ff695beed9c",
+      "enabled": true
+    },
+    {
+      "_id": "79ff575a-3a3e-41c6-9f29-94561be67d70",
+      "type": "EntityRecognizer",
+      "name": "Email",
+      "entityRecognizerId": "5a52a6f4-a839-4d99-82dd-56d7e7e15214",
+      "enabled": true
+    },
+    {
+      "_id": "eb6edacc-66e4-4717-ab3e-45e8cd129173",
+      "type": "EntityRecognizer",
+      "name": "SSN",
+      "entityRecognizerId": "027ca33f-a1f7-4171-b076-55bd09a7b554",
+      "enabled": true
+    },
+    {
+      "_id": "84894e0c-fcf9-4914-a5d6-8a79e2c0d9de",
+      "type": "EntityRecognizer",
+      "name": "Phone Number",
+      "entityRecognizerId": "38930f45-45c1-4d6e-8565-46f52e792d87",
+      "enabled": true
+    },
+    {
+      "_id": "0f7933a2-23ec-46fb-acaf-7023a742db26",
+      "type": "EntityRecognizer",
+      "name": "Date",
+      "entityRecognizerId": "95b22092-dcbf-4372-aa3b-2acc41da87fa",
+      "enabled": true
+    },
+    {
+      "_id": "b2a624c6-a738-4d1c-927c-735021ccc54f",
+      "type": "EntityRecognizer",
+      "name": "Time",
+      "entityRecognizerId": "26cb750f-34b5-4c03-b8fb-15ce3e1956c1",
+      "enabled": true
+    }
+  ],
+  "miniAgents": [
+    {
+      "_id": "6b92ed2d-e672-47c8-a792-3a0b9838e0b9",
+      "integrationId": "goal-based-investment-planner-7356",
+      "name": "Goal Based Investment Planner ",
+      "scope": "This sub-agent is dedicated to crafting personalized investment strategies based on individual goals and financial inputs. Its specific responsibilities include:\n\nUser Goal Integration:\nCollects and interprets the user's investment objectives—such as retirement planning, wealth accumulation, or saving for education—and integrates these goals into the planning process.\n\nData-Driven Analysis:\nLeverages both the user's provided inputs (like risk tolerance, time horizon, and liquidity requirements) and external market knowledge to assess current investment opportunities and potential portfolio configurations.\n\nCustomized Recommendations:\nProcesses the combined information to generate tailored recommendations that align with the user's long-term financial journey. This includes suggesting asset allocation, identifying growth or income-focused strategies, and forecasting potential returns.\n\nDynamic Strategy Adjustment:\nContinuously updates recommendations as new user inputs or market data become available, ensuring that the investment journey remains responsive to changes in financial conditions and user circumstances.\n\nSeamless Delegation:\nActs as the specialized resource for goal-oriented investment planning, enabling the main AI agent to delegate tasks related to personalized financial strategy formulation efficiently.\n\nIn summary, the Goal Based Investment Planner sub-agent is your dedicated financial strategist, using both user inputs and market intelligence to create and adjust a bespoke investment plan tailored to achieving specific financial milestones.",
+      "miniAgentId": "6b92ed2d-e672-47c8-a792-3a0b9838e0b9"
+    },
+    {
+      "_id": "1022833f-91f8-4cfc-9ec5-642a1db06292",
+      "integrationId": "portfolio-rebalancing-suggestions-0864",
+      "name": "Portfolio Rebalancing Suggestions",
+      "scope": "This sub-agent serves as the main recommendation engine for portfolio rebalancing within the AI Agent. Its core responsibilities include:\n\nData Aggregation:\nIntegrates context variables set by various agents and collates information from the knowledge stored in the vector store inside the RAG container.\n\nAdvanced Data Processing:\nLeverages Retrieval Augmented Generation (RAG) techniques to process both structured and unstructured data. It performs in-depth analysis by querying and ranking relevant information to capture current market trends and portfolio performance.\n\nActionable Insights Generation:\nUses the aggregated and processed data to generate intelligent, context-aware portfolio rebalancing suggestions. This includes identifying underperforming assets, recommending optimal asset allocation, and forecasting potential market shifts.\n\nWorkflow Integration:\nOnce insights are derived, it triggers the appropriate workflows within the AI Agent. This ensures that the recommendations are seamlessly integrated into the broader assets and wealth management processes, leading to timely and actionable investment decisions.\n\nOverall, this sub-agent is the critical engine that transforms diverse data points into strategic rebalancing suggestions, enhancing the decision-making process of your Assets and Wealth Management AI Agent.",
+      "miniAgentId": "1022833f-91f8-4cfc-9ec5-642a1db06292"
+    },
+    {
+      "_id": "b27d8b76-2d52-42c7-8b89-0c353734b77f",
+      "integrationId": "stock-market-data-analysis-7242",
+      "name": "Financial Market Analysis",
+      "scope": "This sub-agent is responsible for fetching real-time and historical stock market data by making API calls to financial market data providers. It processes and analyzes this data to extract relevant insights, such as asset performance, trends, and volatility metrics. The extracted information is stored in agent variables, ensuring seamless context-sharing across the AI Agent’s workflow. These variables serve as the foundation for downstream decision-making, enabling another sub-agent to utilize the insights for portfolio rebalancing and investment recommendations.",
+      "intents": [
+        {
+          "_id": "abad2912-c696-4812-8ec8-e6a9707c757a",
+          "name": "Stock Symbol Processing",
+          "description": "Purpose:\n\nThis intent is responsible for handling queries that require fetching detailed market data for a list of stock symbols. Unlike the previous version—which focused on a single symbol—this updated intent processes multiple stock symbols collected by the \"Top Gainers and Loser Stocks\" intent. For each symbol in the list, the intent makes API requests to retrieve the latest market data, including real-time pricing, historical performance, volume, and other key performance indicators. This data will then be used to generate investment recommendations or portfolio analyses.\n\nFlow of Execution:\n\nInput Extraction & Validation:\n\nThe intent begins by verifying that a valid list of stock symbols is available. These symbols are either directly provided by the user or extracted from the content variable populated by the preceding \"Top Gainers and Loser Stocks\" intent.\n\nIf the list is empty or contains invalid symbols, the agent prompts the user for clarification.\n\nAPI Request Initiation:\n\nOnce a valid list is confirmed, the intent initiates API requests for each stock symbol in parallel (or sequentially, based on system design).\n\nEach API request targets the stock market API to retrieve the latest data for its corresponding symbol. This includes real-time pricing, historical data, volume, and other critical performance metrics.\n\nData Processing:\n\nThe responses from the API are parsed and processed individually.\n\nFor each symbol, necessary calculations (such as percentage changes, averages, or other indicators) and data formatting are performed to prepare the market data for further analysis or display.\n\nThe processed data for all symbols is consolidated to form a comprehensive dataset.\n\nWorkflow Integration:\n\nAfter processing, the intent triggers additional workflows within the AI Agent. For example, the aggregated data can be passed to a recommendation generation module or a visualization tool that displays performance trends.\n\nThis integration ensures a seamless transition from data retrieval to delivering actionable investment insights.\n\nIntegration with Other Intents:\n\nPreceding Intent:\nThis \"Stock Data Processing\" intent is designed to execute immediately after the \"Top Gainers and Loser Stocks\" intent. The earlier intent collects and provides the list of stock symbols, which is then used as the input for this intent.\n\nSubsequent Workflows:\nOnce the market data is processed, the resulting dataset can be routed to other modules—for instance, for generating personalized investment guidance or performing portfolio analysis—ensuring that the agent leverages up-to-date and relevant market information.",
+          "examples": [
+            "Show me the latest market data for the top gainers and losers",
+            "an you fetch detailed stock information for all the symbols from the top gainers and losers list?",
+            "I need real-time pricing, volume, and historical data for the stocks identified as top gainers and losers.",
+            "Retrieve the market details for the stocks we discussed in the Top Gainers and Losers intent.",
+            "Get me an analysis of all the stock symbols from the top gainers and losers report."
+          ],
+          "workflowId": "be110687-d250-446e-8908-d2cd19a236d9",
+          "flowType": "Workflow"
+        },
+        {
+          "_id": "fa725f12-cde5-4af4-b05d-8794010752fc",
+          "name": "Top Gainers and Loser Stocks",
+          "description": "Purpose:\nThis intent is designed to handle queries that request a list of both top-performing (gainers) and losing (declining) stocks. It fetches stock performance data from a dedicated API, which can then be used by subsequent intents (such as the Stock Symbol Processing intent) to process detailed market data for a specific stock.\n\nFlow of Execution:\n1. Input Handling:\nThe intent recognizes queries related to identifying both leading gainers and biggest losers in the market.\n\nIt validates any user inputs or parameters that might help refine the search criteria (e.g., market sector, time frame, performance metrics).\n\n2. API Request Initiation:\nUpon validating the input, the intent makes an API call to retrieve both top gainers and top losers based on stock performance.\n\nThe API returns a list of stocks along with key performance metrics, such as growth/decline percentages, trading volumes, and market capitalization.\n\n3. Data Processing and Formatting:\nThe returned data is parsed and filtered to highlight both the best-performing and worst-performing stocks.\n\nThe intent organizes this information into a structured format that can be easily consumed by the AI Agent or passed on to other intents.\n\n4. Content Variable Setting:\nThe intent sets a content variable with the selected top-performing and top-losing stock(s).\n\nThis variable is crucial for enabling subsequent intents (like Stock Symbol Processing) to automatically reference the relevant stock symbol if not explicitly provided by the user.\n\n5. Response Generation:\nThe intent generates a response summarizing both top gainers and top losers in the stock market.\n\nIf required, it prompts the user to select a stock for more detailed analysis.\n\nAdditionally, it may offer contextual insights on why certain stocks are performing well or poorly (e.g., market news, earnings reports, economic trends).\n\nIntegration with Other Intents:\nThe Top Performing & Losing Stocks intent serves as the initial step in a broader workflow, setting the stage for deeper analysis by subsequent intents.\n\nAfter retrieving the top gainers/losers, the agent can delegate the processing of a specific stock’s data to the Stock Symbol Processing intent, using the content variable set in this step.\n\nThe data can also be used by portfolio management sub-agents to recommend investment strategies based on market trends.\n\nThis updated intent ensures a comprehensive market overview, allowing the AI Agent to analyze both profitable opportunities and potential risks in stock investments.",
+          "examples": [
+            "What are the top performing stocks right now?",
+            "Show me the market leaders in stock performance.",
+            "Can you fetch the stocks with the highest growth percentages today?",
+            "What are the top performing tech stocks currently?"
+          ],
+          "workflowId": "6c8c9acf-ef21-48dd-bf8a-01ac730c99b1",
+          "flowType": "Workflow"
+        }
+      ],
+      "miniAgentId": "b27d8b76-2d52-42c7-8b89-0c353734b77f"
+    },
+    {
+      "_id": "569c9894-f460-4651-89bd-04f49c9eeb61",
+      "integrationId": "document-processing-agent-9163",
+      "name": "Document Processing Agent",
+      "scope": "This sub agent specializes in processing asset and wealth management documents. It will extract text from various formats (PDFs, JPEGs, JPGs, docx, txt etc.) using OCR, generate summaries and pass the info as context to the next Sub Agents. Its defined scope ensures that any document-based tasks are efficiently handled and seamlessly integrated into the overall AI Agent workflow.",
+      "intents": [
+        {
+          "_id": "a2ecebd6-3f88-45c0-bea3-9f989da9716b",
+          "name": "Invoice Summarizer",
+          "description": "This intent analyzes portfolio PDFs using the Portfolio Analysis sub-agent. It extracts key investment data and returns a standardized JSON for further processing and rebalancing.\n\nPurpose:\nExtract structured financial data from a portfolio PDF to assess performance, risks, and rebalancing opportunities.\n\nKey Details to Extract:\n\nPortfolio Metadata:\n\nPortfolio ID, Report Date, Currency\n\nInvestment Holdings:\n\nAsset Name, Type (Stocks, Bonds, ETFs, etc.), Ticker, Quantity, Purchase Price, Current Price, Market Value\n\nPerformance Metrics:\n\nUnrealized Gains/Losses, Percentage Change, Dividend Income, Yield\n\nRisk & Allocation:\n\nSector Distribution, Asset Allocation, Diversification Insights\n\nFinancial Summary:\n\nTotal Portfolio Value, Net Gain/Loss, Benchmark Performance, Rebalancing Suggestions\n\nAdditional Info:\n\nInvestment Notes, Future Actionable Insights",
+          "examples": [
+            "Analyze my portfolio PDF and give me a summary of my investments.",
+            "Extract key details from my investment portfolio document.",
+            "Upload my portfolio statement and provide insights on asset allocation.",
+            "Break down my stock holdings from this portfolio file.",
+            "Check my portfolio PDF and tell me if I need to rebalance."
+          ],
+          "workflowId": "331991fd-0be2-4d10-bab6-27e51031ae6d",
+          "flowType": "Workflow"
+        }
+      ],
+      "miniAgentId": "569c9894-f460-4651-89bd-04f49c9eeb61"
+    }
+  ],
+  "rags": [],
+  "intentWorkflows": [
+    {
+      "_id": "331991fd-0be2-4d10-bab6-27e51031ae6d",
+      "integrationId": "invoice-summarizer-0413",
+      "name": "Workflow for Invoice Summarizer"
+    },
+    {
+      "_id": "6c8c9acf-ef21-48dd-bf8a-01ac730c99b1",
+      "integrationId": "top-performing-stock-5203",
+      "name": "Workflow for Top Performing Stock"
+    },
+    {
+      "_id": "be110687-d250-446e-8908-d2cd19a236d9",
+      "integrationId": "stock-symbol-processing-0432",
+      "name": "Workflow for Stock Symbol Processing"
+    }
+  ]
+}

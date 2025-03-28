@@ -1,0 +1,89 @@
+{
+  "aiPersonaIntegrationId": "finwise-version-2-0-0853",
+  "version": "6.0.0",
+  "description": "AI Agent finwise-version-2-0-0853 package version 6.0.0",
+  "data": {
+    "workflows": [
+      [
+        "workflows",
+        "invoice-summarizer-0413.json"
+      ],
+      [
+        "workflows",
+        "ma-document-processing-agent-9163-primary-workflow-for-document-processing-agent.json"
+      ],
+      [
+        "workflows",
+        "stock-symbol-processing-0432.json"
+      ],
+      [
+        "workflows",
+        "top-performing-stock-5203.json"
+      ],
+      [
+        "workflows",
+        "ma-stock-market-data-analysis-7242-primary-workflow-for-financial-market-analysis.json"
+      ],
+      [
+        "workflows",
+        "ma-portfolio-rebalancing-suggestions-0864-primary-workflow-for-portfolio-rebalancing-suggestions.json"
+      ],
+      [
+        "workflows",
+        "ma-goal-based-investment-planner-7356-primary-workflow-for-goal-based-investment-planner.json"
+      ],
+      [
+        "workflows",
+        "image-processing-8685.json"
+      ]
+    ],
+    "models": [
+      [
+        "models",
+        "azure-gpt-4o-mini.json"
+      ],
+      [
+        "models",
+        "azure-gpt-4o.json"
+      ],
+      [
+        "models",
+        "gpt-4-turbo.json"
+      ]
+    ],
+    "miniAgents": [
+      [
+        "miniAgents",
+        "document-processing-agent-9163.json"
+      ],
+      [
+        "miniAgents",
+        "stock-market-data-analysis-7242.json"
+      ],
+      [
+        "miniAgents",
+        "portfolio-rebalancing-suggestions-0864.json"
+      ],
+      [
+        "miniAgents",
+        "goal-based-investment-planner-7356.json"
+      ]
+    ],
+    "snippets": [
+      [
+        "snippets",
+        "ParseApiResponse.json"
+      ],
+      [
+        "snippets",
+        "DocumentToImageOutputFormat.json"
+      ]
+    ],
+    "aiPersonas": [
+      [
+        "aiPersonas",
+        "finwise-version-2-0-0853.json"
+      ]
+    ]
+  }
+}

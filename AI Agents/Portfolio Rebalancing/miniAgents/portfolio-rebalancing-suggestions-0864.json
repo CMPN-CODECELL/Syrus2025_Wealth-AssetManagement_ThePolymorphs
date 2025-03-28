@@ -1,0 +1,13 @@
+{
+  "_id": "1022833f-91f8-4cfc-9ec5-642a1db06292",
+  "aiPersonaId": "8c1f2df4-2053-4020-8cb8-3b77757a6f4d",
+  "integrationId": "portfolio-rebalancing-suggestions-0864",
+  "intentClassification": {
+    "modelId": "gpt-4-turbo"
+  },
+  "name": "Portfolio Rebalancing Suggestions",
+  "primaryWorkflowId": "232775ba-547f-4119-bac3-ff0f498e13d4",
+  "publisherAccountId": "c7fc4684-139f-4cf7-a9e5-10f08cfed9b0",
+  "scope": "This sub-agent serves as the main recommendation engine for portfolio rebalancing within the AI Agent. Its core responsibilities include:\n\nData Aggregation:\nIntegrates context variables set by various agents and collates information from the knowledge stored in the vector store inside the RAG container.\n\nAdvanced Data Processing:\nLeverages Retrieval Augmented Generation (RAG) techniques to process both structured and unstructured data. It performs in-depth analysis by querying and ranking relevant information to capture current market trends and portfolio performance.\n\nActionable Insights Generation:\nUses the aggregated and processed data to generate intelligent, context-aware portfolio rebalancing suggestions. This includes identifying underperforming assets, recommending optimal asset allocation, and forecasting potential market shifts.\n\nWorkflow Integration:\nOnce insights are derived, it triggers the appropriate workflows within the AI Agent. This ensures that the recommendations are seamlessly integrated into the broader assets and wealth management processes, leading to timely and actionable investment decisions.\n\nOverall, this sub-agent is the critical engine that transforms diverse data points into strategic rebalancing suggestions, enhancing the decision-making process of your Assets and Wealth Management AI Agent.",
+  "status": "Active"
+}

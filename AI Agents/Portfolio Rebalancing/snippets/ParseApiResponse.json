@@ -1,7 +1,0 @@
-{
-  "_id": "5b969ad3-45e4-4807-99a0-7445df96aaa8",
-  "aiPersonaId": "8c1f2df4-2053-4020-8cb8-3b77757a6f4d",
-  "code": "const main = () => {\n    const data = input.data;\n    return {\n        result: data,\n        symbolList: data.map(item => item.symbol).join(\",\")\n    }\n};\n\nmain();",
-  "name": "ParseApiResponse",
-  "status": "Active"
-}

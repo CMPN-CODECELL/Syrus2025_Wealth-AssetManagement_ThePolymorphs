@@ -89,11 +89,13 @@ The `FinWise` folder contains the frontend interface for interacting with the AI
 
 ---
 
-## Implementation Screenshots
+## Implementation Screenshots and Videos
 
 For a comprehensive overview of the implementation process, including detailed outputs and screenshots, please refer to the following document:
 
 [Uptiq Outputs](https://docs.google.com/document/d/12qXPEOSIMcUYH885a1U2EjcdIo5d9_UcVoVJdJuXqDk/edit?usp=sharing)
+[Drive Link for Videos](https://drive.google.com/drive/folders/1w1NawCzryZjndmibc8iFdRPUc5CuO85y?usp=sharing)
+[Youtube Video Link](https://youtu.be/vAF8SkqlP_c)
 
 This document provides visual representations and explanations of key features and functionalities
 
